@@ -1,0 +1,90 @@
+==============================================
+http://localhost:9002/role/addRole
+
+{
+	"name":"admin",
+	"displayName":"admin"
+	
+	
+}
+
+==============================================
+
+http://localhost:9002/student/studentregistration
+{  
+   "firstName":"cc",
+   "lastName":"cc",
+   "phone":"cc1",
+   "email":"cc1",
+   "address":"cc",
+   "user":{	  
+      "username":"cc1",
+      "password":"cc",
+      "role":{
+      	"id":1,
+         "name":"admin",
+         "displayName":"admin"
+      }
+   }
+}
+==============================================
+http://localhost:9002/user/userRequest
+{
+
+"name":"cc",
+"email":"cc",
+"sharingPerference":"4",
+"noOfBeds":"2",
+"hostelDetails":{
+"hostelId":"1"
+}
+}
+
+====================================================
+http://localhost:9002/hostel/addroom
+{  
+   "sharingDetails":[  
+      {  
+         
+         "sharingType":3,
+         "noOfPersonAvailability":2,
+         "hostelDetails":{  
+            "hostelId":1
+         }
+       
+      },{  
+      
+         "sharingType":4,
+         "noOfPersonAvailability":1,
+         "hostelDetails":{  
+            "hostelId":1
+         }
+         
+      }
+   ]
+}
+==============================================
+http://localhost:9002/hostel/hostelrequest
+
+{  
+   "hostelName":"test",
+   "firstName":"charan",
+   "lastName":"kumar",
+   "phoneNumber":"1234546788",
+   "emailId":"charan@gmail.com",
+   "address1":"21/23256,dsfndfb",
+   "address2":"",
+   "street":"dd",
+   "landmark":"",
+   "state":"andhra pradesh",
+   "city":"nellore",
+   "country":"India",
+   "pinCode":"524005",
+    "tv":true,
+    "wifi":true,
+    "ac":true,
+      "nonVegetarian":true,
+      "washingMachine":true,
+      "hotWater":true
+   
+}

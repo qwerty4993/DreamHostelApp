@@ -1,0 +1,61 @@
+<style>
+.navbar-default {
+	background-color: fff;
+	border-bottom: none;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+	padding: 10px 0;
+}
+
+avbar-default .navbar-nav>li>a {
+	cursor: pointer;
+	padding: 15px 10px;
+	color: 333;
+}
+</style>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target=".navbar-collapse"
+				aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href=""><img src="images/logo.png"
+				alt="TEST"></a>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1"></div>
+	</div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li ng-show="" class="ng-hide"><a ng-click="">text</a></li>
+				<li ng-show="" class="ng-hide"><a ng-click="">text</a></li>
+				<li ng-show="" class="ng-hide"><a ng-click="">text</a></li>
+				<!--<li ng-show="hasFeature('COMPANY').allowRead == true"><a
+								ng-click="goToCompanyListPage()">Företag</a></li>-->
+				<li class="dropdown ng-hide" ng-show=""><a
+					class="dropdown-toggle" data-toggle="dropdown" role="button"
+					aria-haspopup="true" aria-expanded="false">TEXT<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a ng-click="">text</a></li>
+						<li ng-show="" class="ng-hide"><a ng-click="">text</a></li>
+						<li ng-show="" class="ng-hide"><a ng-click="">text</a></li>
+						<li ng-show="" class="ng-hide"><a ng-click="">text</a></li>
+					</ul></li>
+
+				<li ng-show=""><a ng-click="">TEXT</a></li>
+				<li ng-show=""><a ng-click="">TEXT</a></li>
+				<li ng-show=""><a ng-click="">text</a></li>
+
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main>
+<div ui-view></div>
+</main>

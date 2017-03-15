@@ -1,0 +1,156 @@
+
+<div class="panel panel-primary" style="margin: 20px;">
+	<div class="panel-heading">
+		<h3 class="panel-title">Hostel Registration Form</h3>
+	</div>
+	<div class="panel-body">
+		<form ng-controller="hostelCtrl">
+			<div class="col-md-12 col-sm-12">
+				<div class="form-group col-md-12 col-sm-12">
+					<label for="name">Hostel Name<span
+						ng-show="hostel.hostelName == undefined ||hostel.hostelName==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.hostelName">
+				</div>
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="email">First Name<span
+						ng-show="hostel.firstName== undefined ||hostel.firstName==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.firstName">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="mobile">Last Name<span
+						ng-show="hostel.lastName == undefined ||hostel.lastName==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.lastName">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="address">Phone Number<span
+						ng-show="hostel.phoneNumber == undefined ||hostel.phoneNumber==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.phoneNumber">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="address">Email<span
+						ng-show="hostel.emailId == undefined ||hostel.emailId==''"
+						style="color: red">*</span></label> <input type="email"
+						class="form-control " placeholder="" ng-model="hostel.emailId">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="city">Address1<span
+						ng-show="hostel.address1 == undefined ||hostel.address1==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.address1">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="state">Address2<span
+						ng-show="hostel.address2 == undefined ||hostel.address2==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.address2">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="country">Street<span
+						ng-show="hostel.street == undefined ||hostel.street==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.street">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="pincode">Landmark<span
+						ng-show="hostel.landmark == undefined ||hostel.landmark==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder=""
+						ng-model="hostel.landmark">
+				</div>
+
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="pincode">State<span
+						ng-show="hostel.state == undefined ||hostel.state==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.state">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="arrival">City<span
+						ng-show="hostel.city == undefined ||hostel.city==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.city">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="arrival">Country<span
+						ng-show="hostel.country == undefined ||hostel.country==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.country">
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="arrival">Pincode<span
+						ng-show="hostel.pinCode == undefined ||hostel.pinCode==''"
+						style="color: red">*</span></label> <input type="text"
+						class="form-control " placeholder="" ng-model="hostel.pinCode">
+				</div>
+
+
+				<div class="form-group col-md-12 col-sm-12">
+					<label class="control-label">Hostel For<span
+						ng-show="hostel.hostelFor == undefined ||hostel.hostelFor==''"
+						style="color: red">*</span> :</label> 
+						 <label> <input type="radio" ng-model="hostel.gender" value="male" />male</label> 
+					     <label> <input type="radio" ng-model="hostel.gender" value="female"> Female</label>
+				</div>
+
+				<div class="form-group col-md-12 col-sm-12">
+					<label class="control-label">Preferences :</label> <label>
+						<input type="checkbox" class="custom-control-input" ng-model="hostel.tv">
+						T.V
+					</label> <label> <input type="checkbox" ng-model="hostel.wifi"
+						class="custom-control-input"> Wi-Fi
+					</label> <label> <input type="checkbox" ng-model="hostel.ac"
+						class="custom-control-input"> A.C
+					</label> <label> <input type="checkbox" ng-model="hostel.hotWater"
+						class="custom-control-input"> Hot Water
+					</label> <label> <input type="checkbox" ng-model="hostel.nonVegetarian"
+						class="custom-control-input"> Non-Vegetarian
+					</label> <label> <input type="checkbox" ng-model="hostel.washingMachine"
+						class="custom-control-input"> Washing Machine
+					</label>
+				</div>
+
+
+
+
+
+
+
+				<div class="form-group coloffset1-3">
+					<button type="submit" class="btn btn-success btn-flat"
+						ng-click="addHostel(hostel);">
+						Submit</i>
+					</button>
+
+					<button type="reset" class="btn btn-primary btn-flat"
+						ng-click="resetForm()">Reset</button>
+
+
+					<button type="submit" class="btn btn-warning btn-flat"
+						ng-click="goToHomePage()">Cancel</button>
+				</div>
+
+
+			
+			</div>
+
+		</form>
+
+	</div>
+</div>
+
+

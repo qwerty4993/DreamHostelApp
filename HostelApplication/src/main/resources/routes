@@ -1,0 +1,65 @@
+							User
+===========================================================================================================================
+1)url:http://localhost:9002/user/userRequest:
+RequestData:
+{  
+   "name":"charan",
+   "email":"charankumar.mysore@gmail.com",
+   "sharingPerference":"2",
+   "noOfBeds":"2"
+}
+
+Success Response Data:
+
+Failure Response Data:
+
+    							Admin:
+===========================================================================================================================
+1)Url:http://localhost:9002/hostel/addHostelDetails:
+RequestData:
+{  
+   "name":"charan",
+   "email":"charankumar.mysore@gmail.com",
+   "sharingPerference":"2",
+   "noOfBeds":"2"
+}
+
+Success Response Data:
+
+Failure Response Data:
+
+----end-------
+
+
+2)Url:http://localhost:9002/rooms/addRoom:
+RequestData:
+{  
+   "roomNumber":"",
+   "roomtype":"A/C ",
+   "tv":"",
+   "hotWaterAvailable":"",
+   "sharingType":[  
+      {  
+         "sharingType":"4",
+         "noOfPersonAvailability":"1"
+      },
+      {  
+         "sharingType":"3",
+         "noOfPersonAvailability":"3"
+      },
+      {  
+         "sharingType":"2",
+         "noOfPersonAvailability":"0"
+      },
+      {  
+         "sharingType":"1",
+         "noOfPersonAvailability":"0"
+      }
+   ]
+}
+
+Success Response Data:
+
+Failure Response Data:
+
+----end-------

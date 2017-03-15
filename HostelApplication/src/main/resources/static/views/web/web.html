@@ -1,0 +1,81 @@
+
+<script type="text/javascript">
+	function changeState(el) {
+		if (el.readOnly)
+			el.checked = el.readOnly = false;
+		else if (!el.checked)
+			el.readOnly = el.indeterminate = true;
+	}
+</script>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" ui-sref="web.hem">DreamHostel
+			<!-- <img src="images/logo.png" alt="MyCheck"> --></a>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-left">
+				<li><a ui-sref="web.kundcase.kundcase1">test1</a></li>
+				<li><a ui-sref="web.arbetsmetodik">test2</a></li>
+				<li><a ui-sref="web.dialogverktyget">test3</a></li>
+				<li><a ui-sref="web.varfor">test4</a></li>
+				<li><a ui-sref="web.om-oss">test5</a></li>
+				<li><a ui-sref="web.kontakt">test6</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- Large modal -->
+
+
+                        
+          
+		
+		
+		
+
+<main>
+<div ui-view></div>
+</main>
+<!-- <footer style="padding: 20px 0 10px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h5>Kontakta Oss</h5>
+				<p>
+					<i class="fa fa-phone" style="margin-right: 15px;"></i>
+					+46-723009100<br> <span style="padding-left: 30px;">+46-730774903</span>
+				</p>
+				<p>
+					<i class="fa fa-envelope-o" style="margin-right: 15px;"></i>
+					info@mycheck.se
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					Follow Us: <a href="#"><i class="fa fa-linkedin"></i></a>
+				</p>
+			</div>
+			<div class="col-sm-6">
+				<p class="footer-logos">
+					Ett Samarbete mellan <br /> <img src="images/comorgbiz.png" alt=""
+						height="36" style="margin: 5px"> <img src="images/iturn.png"
+						alt="" height="36" style="margin: 5px">
+				</p>
+			</div>
+		</div>
+	</div>
+</footer> -->
+<script>
+	$('#carousel-text').carousel({
+		interval : 1000
+	})
+</script>
