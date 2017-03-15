@@ -1,14 +1,30 @@
-angular.module('hostelapp').controller("appCtrl",
+angular.module('hostelapp').controller(
+		"appCtrl",
 		function($state, $scope, loginService, $localStorage) {
 
-			/*$scope.username = $localStorage.loginDetails.username;
-			console.log('In appCtrl');
-			console.log($scope.username);*/
+			$scope.goToRolesListPage = function() {
+				$state.go('hostel.roleList');
 
-			/* Page Transfers */
-			/*$scope.goToDashboard = function() {
-				$state.go('cincin.dashboard');
-			};*/
+			}
+			$scope.goToDashBoardPage = function() {
+				$state.go('hostel.dashboard');
+
+			}
+			$scope.goToFeaturesListPage= function() {
+				$state.go('hostel.featureList');
+
+			}
 			
 			
+			$scope.hasFeature = function(name) {
+				var found;
+				angular.forEach($localStorage.user.role.features, function(
+						feature) {
+
+					if (feature.name == name) {
+						found = feature;
+					}
+				});
+				return found;
+			};
 		});

@@ -27,7 +27,7 @@ public class CORSSecurityFilter implements Filter {
 		response.setHeader("Access-Control-Allow-Headers", "origin, content-type, accept, x-requested-with, "
 				+ "Access-Control-Request-Method, " + "Access-Control-Request-Headers, Authorization");
 		String Authorization = request.getHeader("Authorization");
-System.out.println("Aviod this : "+Authorization);
+//System.out.println("Aviod this : "+Authorization);
 		if (request.getMethod().equalsIgnoreCase("OPTIONS")) {
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 		} else {

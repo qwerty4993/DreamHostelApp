@@ -34,13 +34,25 @@ angular
 							console.log(data.data);
 
 							if(data.data.statusCode==200){
+								if (data.data.responseObjects.role.name== 'admin') {
+									console.log(data.data.responseObjects.role.features)
+									console.log("adminn logined ");
+									$state.go('hostel.dashboard');
+								}
+								else {
+									console.log("hello")
+									//$state.go('hostel.userDashboard');
+								}
+								$localStorage.user = data.data.responseObjects;
+								
+								$localStorage.$save();
 								$state.go('hostel.dashboard');
 							}else {
 								$state.go('web.home');
 								notify({
 									message : "Invalid UserName/Password",
 									classes : 'alert-danger',
-									duration: 1500
+									duration: 30000
 								})
 								
 							}

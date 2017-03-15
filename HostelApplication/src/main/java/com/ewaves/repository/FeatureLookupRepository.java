@@ -4,13 +4,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ewaves.entities.Role;
+import com.ewaves.domain.FeatureLookup;
 
 @Repository
-public interface RoleRepository extends PagingAndSortingRepository<Role, Long>, JpaSpecificationExecutor<Role> {
+public interface FeatureLookupRepository
+		extends PagingAndSortingRepository<FeatureLookup, Long>, JpaSpecificationExecutor<FeatureLookup> {
 
-	Role findByName(String name);
-
-	Role findById(Long id);
-
+	FeatureLookup findByName(String name);
 }

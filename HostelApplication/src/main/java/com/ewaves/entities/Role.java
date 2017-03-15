@@ -1,11 +1,14 @@
 package com.ewaves.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.ewaves.domain.Feature;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -29,9 +33,11 @@ public class Role implements java.io.Serializable {
 	private String displayName;
 
 	private Set<LoginDetails> users;
+	private List<Feature> features;
 
 	public Role() {
 		users = new TreeSet<LoginDetails>();
+		features = new ArrayList<Feature>();
 
 	}
 
@@ -84,6 +90,16 @@ public class Role implements java.io.Serializable {
 		return result;
 	}
 
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "role")
+	public List<Feature> getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(List<Feature> features) {
+		this.features = features;
+
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -103,7 +119,8 @@ public class Role implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", name=" + name + ", displayName=" + displayName + ", users=" + users + "]";
+		return "Role [id=" + id + ", name=" + name + ", displayName=" + displayName + ", users=" + users + ", features="
+				+ features + "]";
 	}
 
 }

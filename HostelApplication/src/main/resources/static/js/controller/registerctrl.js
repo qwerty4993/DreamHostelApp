@@ -16,7 +16,7 @@ function($state, $scope, notify,$stateParams) {
 										function(response) {
 
 											notify({
-												message : "Vi har skickat lösenord till din email.Please återställa lösenordet!",
+												message : "fdfdf!",
 												classes : 'alert-success',
 											});
 										}, function(error) {

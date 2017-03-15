@@ -24,7 +24,8 @@ hostelapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 		controller : 'appCtrl'
 	}).state('hostel.dashboard', {
 		templateUrl : 'views/dashboard.html',
-		url : '/dashboard'
+		url : '/dashboard',
+		controller : 'dashboradCtrl'	
 	})
 });
 

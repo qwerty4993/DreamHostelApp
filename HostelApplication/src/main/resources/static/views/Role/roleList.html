@@ -1,0 +1,48 @@
+<div class="page-header">
+	<div class="container">
+		<ol class="breadcrumb1">
+			<li class="active">Roll</li>
+		</ol>
+	</div>
+</div>
+<div class="container" ng-init="findAllRoles();">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Roller
+			<button class="btn btn-xs btn-primary pull-right"
+				ng-click="goToAddRolePage()">
+				<i class="fa fa-plus" aria-hidden="true"></i>New Role
+			</button>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>display Name</th>
+						<th class="text-center">Edit</th>
+						<th class="text-center">Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="role in rolesList">
+						<td>{{$index+1}}</td>
+						<td>{{role.name}}</td>
+						<td>{{role.displayName}}</td>
+						<td class="text-center"><button
+								class="btn btn-xs btn-primary"
+								ng-click="goToUpdateRolePage(role);" title="Edit">
+								<i class="fa fa-pencil" aria-hidden="true"></i>
+							</button></td>
+							<td class="text-center"><button class="btn btn-xs btn-danger" data-toggle="modal"
+									data-target="#featureDeletion"
+								ng-click="deleteFeature(feature);" title="Delete">
+								<i class="fa fa-trash" aria-hidden="true"></i> 
+							</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

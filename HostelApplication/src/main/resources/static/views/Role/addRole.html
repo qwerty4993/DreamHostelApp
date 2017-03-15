@@ -1,0 +1,98 @@
+<div class="page-header">
+	<div class="container">
+		<!--<a href="" class="backBtn"><i class="fa fa-arrow-circle-o-left fa-lg"></i></a>-->
+		<ol class="breadcrumb1">
+			<li class="active">New roll</li>
+		</ol>
+	</div>
+</div>
+<div class="container" ng-init="findAllFeatures();">
+	<div class="row">
+		<div class="col-sm-4 col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">New roll</div>
+				<div class="panel-body bg-light">
+					<form role="form">
+						<div class="form-group">
+							<label class="control-label" for="name">Name<span
+								ng-show="role.name == undefined || role.name ==''"
+								class="text-danger">*</span></label> <input type="text"
+								class="form-control" id="name" ng-model="role.name">
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="displayName">Display
+								Name <span
+								ng-show="role.displayName==undefined || role.displayName==''"
+								class="text-danger">*</span>
+							</label> <input type="text" class="form-control" id="displayName"
+								ng-model="role.displayName">
+						</div>
+						<button class="btn btn-primary" my-Click-Once
+							ng-click="addRole(role);"
+							ng-disabled="!role.name || !role.displayName">create</button>
+						<button class="btn btn-link" ng-click="goToRolesListPage();">cancel</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8 col-md-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">Roll</div>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Namn</th>
+								<th>Description</th>
+								<!-- <th class="text-center">chooseall</th> -->
+								<th class="text-center">read</th>
+								<th class="text-center">Create</th>
+								<th class="text-center">eidt</th>
+								<th class="text-center">close</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="feature in role.features "
+								ng-init="role.features[$index].id=undefined">
+								<td>{{($index+1)}}</td>
+								<td>{{feature.name}}</td>
+								<td>{{feature.description}}</td>
+								<!-- <td class="text-center"><div class="checkbox no-margin">
+										<label> <input type="checkbox" ng-model="allowAccess"
+											ng-click="checkAll(feature,allowAccess);" />
+										</label>
+									</div></td> -->
+								<td class="text-center"><div class="checkbox no-margin">
+										<label> <input type="checkbox"
+											ng-model="feature.allowRead" />
+										</label>
+									</div></td>
+								<td class="text-center"><div class="checkbox no-margin">
+										<label> <input type="checkbox"
+											ng-model="feature.allowCreate" />
+										</label>
+									</div></td>
+								<td class="text-center"><div class="checkbox no-margin">
+										<label> <input type="checkbox"
+											ng-model="feature.allowEdit" />
+										</label>
+									</div></td>
+								<td class="text-center"><div class="checkbox no-margin">
+										<label> <input type="checkbox"
+											ng-model="feature.allowDelete" />
+										</label>
+									</div></td>
+							</tr>
+							<tr ng-if="model.features.length == 0">
+								<td colspan="7" align="center"><h2>
+										<i class="fa fa-meh-o"></i> Oops! Inga uppgifter funna
+									</h2></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

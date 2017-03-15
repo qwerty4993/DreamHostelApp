@@ -26,7 +26,7 @@ angular.module('hostelapp').controller(
 					if (data.data.statusCode == 201) {
 						notify({
 							message : "Successfully Registered",
-							classes : 'alert-success',
+							classes : 'alert-primary',
 							duration : 1000
 						})
 					}
