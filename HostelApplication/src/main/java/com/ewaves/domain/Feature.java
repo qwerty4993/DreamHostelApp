@@ -116,14 +116,7 @@ public class Feature implements Serializable {
 
 	
 
-	@Override
-	public String toString() {
-		return "Feature [id=" + id + ", name=" + name + ", description="
-				+ description + ", allowRead=" + allowRead + ", allowCreate="
-				+ allowCreate + ", allowEdit=" + allowEdit + ", allowDelete="
-				+ allowDelete + ", role=" + role + "]";
-	}
-
+	
 	@Transient
 	public Boolean getAllowAccess() {
 		if (allowRead != null && allowRead == true && allowCreate != null
@@ -135,5 +128,6 @@ public class Feature implements Serializable {
 			return false;
 		}
 	}
+	
 
 }

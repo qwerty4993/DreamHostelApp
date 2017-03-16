@@ -14,36 +14,21 @@
 				<a  href="#"><img src="./images/DreamHostel.jpg"
 					alt="DreamHostel"></a>
 			</div>
-			<!-- <div class="collapse navbar-collapse"
+		 <div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a ng-click="goToDashBoardPage()"><i
-							class="fa fa-home fa-lg"></i> Hem</a></li>
-					<li ng-show="hasFeature('TARGET').allowRead == true"><a
-						ng-click="goToMalcart()"><i class="fa fa-crosshairs fa-lg"></i>
-							Målkort</a></li>
-					<li ng-show="hasFeature('SURVEY').allowRead == true"><a 
-					    ng-click="goToAddMySurveyListPage()"><i	class="fa fa-list-alt fa-lg"></i> 
-					        Enkäter</a></li>
-					<li ng-show="hasFeature('FOLLOWUP').allowRead == true"
-						class="dropdown"><a 
-						data-toggle="dropdown" class="dropdown-toggle"><i
-							class="fa fa-recycle fa-lg"></i>Uppföljning <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a ng-click="goToMalcartFallowUpPage();">Målkort uppföljning</a></li>
-							<li><a ng-click="goToSurveyFallowUpPage();">Enkäter uppföljning</a></li>
-							<li><a ng-click="goToSelfAssessmentPage();">Självskattning</a></li>
-						</ul></li>
+							class="fa fa-home fa-lg"></i> Home</a></li>
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle"><i class="fa fa-user-circle fa-lg"></i><b
 							class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">{{userName}}</a></li>
-							<li><a href="#">Inställningar</a></li>
-							<li><a ng-click="doLogout()">Logga ut</a></li>
+							<li><a href="#">{{username}}</a></li>
+							<!-- <li><a href="#">Inställningar</a></li>
+							<li><a ng-click="doLogout()">Logga ut</a></li> -->
 						</ul></li>
 				</ul>
-			</div> -->
+			</div>
 		</div>
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
@@ -51,10 +36,26 @@
 				<ul class="nav navbar-nav">
 					<li ng-show="hasFeature('ROLE').allowRead == true"><a
 						ng-click="goToRolesListPage()">Roll</a></li>
-					 <li ng-show="hasFeature('Features').allowRead == true"><a
+					 <li ng-show="hasFeature('FEATURES').allowRead == true"><a
 						ng-click="goToFeaturesListPage()">Features</a></li>
-					<li ng-show="hasFeature('HostelRequest').allowRead == true"><a
-						ng-click="goToFeaturesListPage()">HostelRequest</a></li> 
+						<li ng-show="hasFeature('USERS').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">Users</a></li>
+					<li ng-show="hasFeature('HOSTELREQUEST').allowRead == true"><a
+						ng-click="goToHostelRequestListPage()">New Hostel Request</a></li>
+						<li ng-show="hasFeature('ROOMS').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">ROOMS</a></li> 
+						<li ng-show="hasFeature('PROFILE').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">PROFILE</a></li>
+						<li ng-show="hasFeature('STUDENTREQUEST').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">StudentRequest</a></li>
+						<li ng-show="hasFeature('UPDATES').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">updates</a></li>
+						<li ng-show="hasFeature('SENDEMAIL').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">Send EMail</a></li>
+						<!-- <li ng-show="hasFeature('HOSTELDETAILS').allowRead == true"><a
+						ng-click="goToHostelDetaislListPage()">Hostel Details</a></li> -->
+<!-- 						SETTINGS   StudentRequest -->
+						
 
 				</ul>
 			</div>

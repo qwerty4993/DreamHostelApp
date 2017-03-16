@@ -1,6 +1,9 @@
 package com.ewaves.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,9 +15,7 @@ import com.ewaves.domain.HostelCityStateVO;
 import com.ewaves.domain.ResponseVO;
 import com.ewaves.domain.RoomDetailsVO;
 import com.ewaves.entities.HostelDetails;
-import com.ewaves.entities.Student;
 import com.ewaves.entities.StudentRequest;
-import com.ewaves.repository.StudentRepository;
 import com.ewaves.repository.StudentRequestRepository;
 import com.ewaves.service.HostelService;
 
@@ -41,6 +42,22 @@ public class HostelController {
 		return responseVO;
 
 	}
+	@RequestMapping(value = "/getAllHostelsForApproval", method = RequestMethod.GET)
+	public @ResponseBody List<HostelDetails> getAllHostelsForApproval() {
+		return hostelService.getAllHostelsForApproval();
+		
+
+	}
+	@RequestMapping(value = "/hostelDetails/{id}", method = RequestMethod.GET)
+	public HostelDetails findHostelById(@PathVariable("id") Long id) {
+		return hostelService.findHostelById(id);
+	}
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping(value = "/getAllCityAndState", method = RequestMethod.POST)
 	public @ResponseBody ResponseVO getHostelDetalsByStateAndCity(@RequestBody HostelCityStateVO requestVO) {

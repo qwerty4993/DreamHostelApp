@@ -1,0 +1,59 @@
+<div class="page-header">
+	<div class="container">
+		<ol class="breadcrumb1">
+			<li class="active">Hostel Request List</li>
+		</ol>
+	</div>
+</div>
+<div class="container" ng-init="findAllHostelRequest();">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Hostel Request
+			<!-- <button class="btn btn-xs btn-primary pull-right"
+				ng-click="goToAddRolePage()">
+				<i class="fa fa-plus" aria-hidden="true"></i>New Role
+			</button> -->
+		</div>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Owner Nme</th>
+						<th>Hostel Name</th>
+						<th class="text-center">View</th>
+						<!-- <th class="text-center">Approval</th> -->
+						<th class="text-center">Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="hostelList in hostelRequestList">
+						<td>{{$index+1}}</td>
+						<td>{{hostelList.firstName}}</td>
+						<td>{{hostelList.hostelName}}</td>
+						<td class="text-center"><button
+								class="btn btn-xs btn-primary"
+								ng-click="goToViewHostelDetails(hostelList.hostelId);" title="View">
+								<i class="fa fa-pencil" aria-hidden="true"></i>
+							</button></td>
+							<!-- <td class="text-center"><button
+								class="btn btn-xs btn-primary"
+								ng-click="goToUpdateRolePage(role);" title="Approval">
+								<i class="fa fa-pencil" aria-hidden="true"></i>
+							</button></td> -->
+						<td class="text-center"><button class="btn btn-xs btn-danger"
+								data-toggle="modal" data-target="#featureDeletion"
+								ng-click="deleteFeature(feature);" title="Delete">
+								<i class="fa fa-trash" aria-hidden="true"></i>
+							</button></td>
+					</tr>
+					<tr ng-if="model.hostelList.length == 0">
+								<td colspan="7" align="center"><h2>
+										<i class="fa fa-meh-o"></i> Oops! No data found to Approval....!
+									</h2></td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

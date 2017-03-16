@@ -14,6 +14,14 @@ angular.module('hostelapp').controller(
 				$state.go('hostel.featureList');
 
 			}
+			$scope.goToHostelRequestListPage= function() {
+				$state.go('hostel.HostelRequestList');
+
+			}
+			$scope.goToHostelDetaislListPage= function() {
+				$state.go('hostel.HostelDetaislList');
+
+			}
 			
 			
 			$scope.hasFeature = function(name) {

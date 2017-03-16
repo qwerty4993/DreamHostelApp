@@ -117,10 +117,5 @@ public class Role implements java.io.Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Role [id=" + id + ", name=" + name + ", displayName=" + displayName + ", users=" + users + ", features="
-				+ features + "]";
-	}
 
 }

@@ -67,23 +67,7 @@ public class HostelService {
 		return responseVO;
 	}
 
-	/*
-	 * public ResponseVO getAllHostels(String city, String state) { if
-	 * (!(city.isEmpty()) && state.isEmpty()) {
-	 * 
-	 * return HttpStatusCode.NON_AUTHORITATIVE_INFORMATION.
-	 * getResponseVO("city or state should not be empty"); } List<HostelDetails>
-	 * hostelDetailsList = hostelRepossitory.findByCityAndState(city, state);
-	 * 
-	 * // HostelDetails cityStateList = hostelDetailsList.get(); if
-	 * (hostelDetailsList != null) {
-	 * 
-	 * } ResponseVO responseVO = new ResponseVO(); responseVO =
-	 * HttpStatusCode.FOUND.getResponseVO("SUCCESS");
-	 * responseVO.setResponseObjects(hostelDetailsList);
-	 * 
-	 * return responseVO; }
-	 */
+	
 
 	public ResponseVO getAllHostels1(String city, String state) {
 		ResponseVO responseVO = new ResponseVO();
@@ -121,7 +105,7 @@ public class HostelService {
 		for (SharingDetails sharingDetails : sharingDetailList) {
 			if (sharingDetails.getSharingType().toString().isEmpty()
 					&& sharingDetails.getNoOfPersonAvailability().toString().isEmpty()) {
-				return HttpStatusCode.FOUND.getResponseVO("dfdfdf");
+				return HttpStatusCode.FOUND.getResponseVO("avaliable");
 			}
 			sharingDetails.setInsertedOn(LocalDateTime.now());
 			sharingDetailList.add(sharingDetails);
@@ -131,5 +115,28 @@ public class HostelService {
 
 		return HttpStatusCode.FOUND.getResponseVO("SUCCESS");
 	}
+
+	
+		
+		public List<HostelDetails> getAllHostelsForApproval() {
+			
+			List<HostelDetails> list = (List<HostelDetails>) hostelRepossitory.findAll();
+			for (HostelDetails hostelDetails : list) {
+				if (!(hostelDetails.getIsEnable() == true)) {
+					
+					return list;
+				} 
+				
+			}
+			return null;
+			
+		}
+
+		public HostelDetails findHostelById(Long id) {
+			HostelDetails dbHostelDetails = hostelRepossitory.findOne(id);
+			return dbHostelDetails;
+			
+		}
+	
 
 }

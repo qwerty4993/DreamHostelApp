@@ -39,6 +39,7 @@ public class HostelDetails implements Serializable {
 	private boolean nonVegetarian;
 	private boolean washingMachine;
 	private boolean hotWater;
+	
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hostelDetails", orphanRemoval = true)

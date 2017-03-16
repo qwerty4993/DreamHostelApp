@@ -1,11 +1,14 @@
 
+<div class="container">
 <div class="panel panel-primary" style="margin: 20px;">
 	<div class="panel-heading">
 		<h3 class="panel-title">Hostel Registration Form</h3>
 	</div>
+	<!--  -->
 	<div class="panel-body">
 		<form ng-controller="hostelCtrl">
-			<div class="col-md-12 col-sm-12">
+			
+			
 				<div class="form-group col-md-12 col-sm-12">
 					<label for="name">Hostel Name<span
 						ng-show="hostel.hostelName == undefined ||hostel.hostelName==''"
@@ -130,8 +133,10 @@
 
 
 
-				<div class="form-group coloffset1-3">
+				<div class="col-xs-offset-5 col-xs-10">
 					<button type="submit" class="btn btn-success btn-flat"
+						ng-disabled="!hostel.hostelName||!hostel.firstName||!hostel.lastName||!hostel.phoneNumber||!hostel.emailId||!hostel.address1
+						||!hostel.street||!hostel.state||!hostel.city||!hostel.country||!hostel.pinCode"
 						ng-click="addHostel(hostel);">
 						Submit</i>
 					</button>
@@ -145,10 +150,10 @@
 				</div>
 
 
-			
+			</form>
 			</div>
 
-		</form>
+		
 
 	</div>
 </div>

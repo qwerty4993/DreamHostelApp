@@ -158,11 +158,6 @@ public class Student implements java.io.Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
-				+ ", email=" + email + ", address=" + address + ", insertedOn=" + insertedOn + ", modifiedOn="
-				+ modifiedOn + ", user=" + user + ", studentRequests=" + studentRequests + "]";
-	}
+	
 
 }
