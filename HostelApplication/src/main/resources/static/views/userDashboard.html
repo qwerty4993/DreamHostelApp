@@ -1,0 +1,29 @@
+
+<div class="page-header">
+	<div class="container">
+		<!--<a href="" class="backBtn"><i class="fa fa-arrow-circle-o-left fa-lg"></i></a>-->
+		<ol class="breadcrumb1">
+			<li><a href="">Administration</a></li>
+		</ol>
+	</div>
+</div>
+<div class="container">
+	<div class="row text-center"
+		style="margin-top: 20px; margin-bottom: 20px;"
+		ng-show="hasFeature('ROOMS').allowRead == true">
+		<a ng-click="goToRoomListPage()" class="category1">
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>
+							<i class="de_icon glyphicon glyphicon-bed  circle large fa-2x"
+								style="color: #FE89A2; border: solid 1px #FE4365;"></i>
+							
+						</p>
+						<h5>ROOM</h5>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>

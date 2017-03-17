@@ -26,7 +26,24 @@ hostelapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 		templateUrl : 'views/dashboard.html',
 		url : '/dashboard',
 		controller : 'dashboradCtrl'	
-	})
-});
+	}).state('hostel.userDashboard', {
+		templateUrl : 'views/userDashboard.html',
+		url : '/userdashboard',
+		controller : 'dashboradCtrl'	
+	});
+})/*.run(function($rootScope, $localStorage, $location,$state) {
+	$rootScope.$on("$locationChangeStart", function(event, next, current) {
+		console.log($state.current);
+		if($state.current.name=='resetPassword'){
+			alert($state.current.name);
+		}
+		if($state.current.name!='resetPassword'){
+			
+			if ($localStorage.authorization == undefined) {
+				$location.path('/hem');
+			}
+		}
+	});
+})*/;
 
 // //templateUrl : 'views/Restaurant/restaurantList.html',

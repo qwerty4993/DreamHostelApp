@@ -2,8 +2,8 @@ angular
 		.module('hostelapp')
 		.controller(
 				"loginctrl",
-				function($state, $scope, $http, $localStorage, notify, HOSTELAPP_CONSTANTS,$location) {
-					
+				function($state, $scope, $http,$stateParams, $localStorage, notify, HOSTELAPP_CONSTANTS,$location) {
+					$scope.userName = $stateParams.userName;
 //					$scope.loginDetails = {};
 //					$scope.gotoDashBoard = function() {
 //						var authorization = "Basic "
@@ -36,17 +36,17 @@ angular
 							if(data.data.statusCode==200){
 								if (data.data.responseObjects.role.name== 'admin') {
 									console.log(data.data.responseObjects.role.features)
-									console.log("adminn logined ");
 									$state.go('hostel.dashboard');
 								}
 								else {
+									$state.go('hostel.userDashboard');
 									console.log("hello")
 									//$state.go('hostel.userDashboard');
 								}
 								$localStorage.user = data.data.responseObjects;
+								//we have to keep student and manager id in localstorage
+ 								$localStorage.$save();
 								
-								$localStorage.$save();
-								$state.go('hostel.dashboard');
 							}else {
 								$state.go('web.home');
 								notify({

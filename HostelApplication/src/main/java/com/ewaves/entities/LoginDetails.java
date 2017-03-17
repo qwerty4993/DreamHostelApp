@@ -147,7 +147,7 @@ public class LoginDetails implements java.io.Serializable {
 	}
 
 	@Transient
-	public Long getEmployeeId() {
+	public Long getStudentId() {
 		if (this.student != null) {
 			return this.student.getId();
 		} else {

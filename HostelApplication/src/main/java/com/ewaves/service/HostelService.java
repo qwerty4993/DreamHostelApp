@@ -122,7 +122,7 @@ public class HostelService {
 			
 			List<HostelDetails> list = (List<HostelDetails>) hostelRepossitory.findAll();
 			for (HostelDetails hostelDetails : list) {
-				if (!(hostelDetails.getIsEnable() == true)) {
+				if ((hostelDetails.getIsEnable()!= true)) {
 					
 					return list;
 				} 
