@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ewaves.domain.Feature;
+import com.ewaves.entities.Feature;
 import com.ewaves.entities.Role;
 import com.ewaves.repository.RoleRepository;
 

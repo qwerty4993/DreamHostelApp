@@ -7,16 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ewaves.domain.HostelCityStateVO;
+import com.ewaves.domain.HostelFilterVO;
 import com.ewaves.domain.ResponseVO;
 import com.ewaves.domain.RoomDetailsVO;
 import com.ewaves.entities.HostelDetails;
-import com.ewaves.entities.StudentRequest;
-import com.ewaves.repository.StudentRequestRepository;
 import com.ewaves.service.HostelService;
 
 @RestController
@@ -25,8 +23,6 @@ public class HostelController {
 
 	@Autowired
 	private HostelService hostelService;
-	@Autowired
-	private StudentRequestRepository studentRequestRepository;
 
 	@RequestMapping(value = "/hostelrequest", method = RequestMethod.POST)
 	public @ResponseBody ResponseVO hostelRequest(@RequestBody HostelDetails hostelDeails) {
@@ -42,22 +38,17 @@ public class HostelController {
 		return responseVO;
 
 	}
+
 	@RequestMapping(value = "/getAllHostelsForApproval", method = RequestMethod.GET)
 	public @ResponseBody List<HostelDetails> getAllHostelsForApproval() {
 		return hostelService.getAllHostelsForApproval();
-		
 
 	}
+
 	@RequestMapping(value = "/hostelDetails/{id}", method = RequestMethod.GET)
 	public HostelDetails findHostelById(@PathVariable("id") Long id) {
 		return hostelService.findHostelById(id);
 	}
-	
-	
-	
-	
-	
-	
 
 	@RequestMapping(value = "/getAllCityAndState", method = RequestMethod.POST)
 	public @ResponseBody ResponseVO getHostelDetalsByStateAndCity(@RequestBody HostelCityStateVO requestVO) {
@@ -74,18 +65,23 @@ public class HostelController {
 
 	}
 
-	@RequestMapping(value = "/approvalStudent", method = RequestMethod.GET)
-	public @ResponseBody ResponseVO approvalStudent(@RequestParam(value = "id") Long id) {
+	@RequestMapping(value = "/approvalStudent/{id}", method = RequestMethod.GET)
+	public @ResponseBody HostelDetails approvalHostel(@PathVariable(value = "id") Long id) {
+		System.out.println(id);
 
-	StudentRequest student = studentRequestRepository.findOne(id);
-	
-	System.out.println(student.toString());
-	
-//	student.getStudent().getStudentRequests().setIsApproval(true);
-//	
-//	studentRequestRepository.save(student);
-		return null;
+		return hostelService.approvalHostel(id);
 
 	}
+	
+	@RequestMapping(value = "/hostelFilterVO", method = RequestMethod.POST)
+	public @ResponseBody List<HostelDetails> HostelFilter (@RequestBody HostelFilterVO hostelFilterVO) {
+		System.out.println(hostelFilterVO);
+		List<HostelDetails> d=hostelService.hostelFilter(hostelFilterVO);
+
+		return d;
+
+	}
+	
+	
 
 }

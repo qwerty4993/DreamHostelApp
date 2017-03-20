@@ -17,7 +17,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.ewaves.domain.Feature;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

@@ -1,7 +1,7 @@
 angular.module('hostelapp').controller(
 		"hostelCtrl",
-		function($state, $scope, $http, $localStorage, HOSTELAPP_CONSTANTS,$stateParams,
-				notify, $location) {
+		function($state, $scope, $http, $localStorage, HOSTELAPP_CONSTANTS,
+				$stateParams, notify, $location) {
 
 			$scope.goToHomePage = function() {
 				$state.go('web.home');
@@ -12,6 +12,10 @@ angular.module('hostelapp').controller(
 				$state.go('hostel.HostelDetailsView', {
 					previewHostelDetails : previewHostelDetails
 				});
+			}
+			
+			$scope.goToHostelRequestList = function() {
+				$state.go('hostel.HostelRequestList');
 			}
 
 			// Get hostel By ID
@@ -50,6 +54,25 @@ angular.module('hostelapp').controller(
 				$http.get(url).then(function(data) {
 					console.log(data.data.responseObjects)
 					$scope.hostelDetailsList = data.data.responseObjects;
+				}, function(error) {
+					alert(error.data.message);
+				});
+			}
+			$scope.approveHostel = function(hostelId) {
+
+				console.log(hostelId)
+
+				var url = HOSTELAPP_CONSTANTS.URL + "hostel/approvalStudent/"
+						+ hostelId;
+
+				$http.get(url).then(function(data) {
+					$scope.goToHostelRequestList();
+					notify({
+						message : "Successfully Approved",
+						classes : 'alert-primary',
+						duration : 1000
+					})
+
 				}, function(error) {
 					alert(error.data.message);
 				});

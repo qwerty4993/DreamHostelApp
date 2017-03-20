@@ -1,4 +1,4 @@
-package com.ewaves.domain;
+package com.ewaves.entities;
 
 import java.io.Serializable;
 

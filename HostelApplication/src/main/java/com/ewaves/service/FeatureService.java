@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ewaves.domain.FeatureLookup;
+import com.ewaves.entities.FeatureLookup;
 import com.ewaves.repository.FeatureLookupRepository;
 import com.ewaves.repository.FeatureRepository;
 

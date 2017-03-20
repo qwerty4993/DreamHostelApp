@@ -1,4 +1,4 @@
-package com.ewaves.domain;
+package com.ewaves.entities;
 
 import java.io.Serializable;
 
@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
-import com.ewaves.entities.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

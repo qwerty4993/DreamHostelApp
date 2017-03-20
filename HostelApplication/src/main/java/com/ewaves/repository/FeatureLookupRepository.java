@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ewaves.domain.FeatureLookup;
+import com.ewaves.entities.FeatureLookup;
 
 @Repository
 public interface FeatureLookupRepository

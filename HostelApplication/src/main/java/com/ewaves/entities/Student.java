@@ -8,14 +8,20 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ewaves.converter.LocalDateConverter;
+import com.ewaves.converter.LocalDateDeserializer;
+import com.ewaves.converter.LocalDateSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -24,21 +30,21 @@ public class Student implements java.io.Serializable {
 	private static final long serialVersionUID = -4581283824375799719L;
 
 	private Long id;
-
 	private String firstName;
 	private String lastName;
 	private String phone;
-
+	private String gender;
+	@Convert(converter = LocalDateConverter.class)
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private Date dateOfBirth;
 	private String email;
-
 	private String address;
-
 	private Date insertedOn;
-
 	private Date modifiedOn;
-
+	
 	private LoginDetails user;
-	@JsonIgnore
+	
 	private StudentRequest studentRequests;
 
 	@Id
@@ -79,7 +85,7 @@ public class Student implements java.io.Serializable {
 		this.address = address;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "student")
 	public LoginDetails getUser() {
 		return user;
 	}
@@ -124,13 +130,29 @@ public class Student implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "student")
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "student")
 	public StudentRequest getStudentRequests() {
 		return studentRequests;
 	}
 
 	public void setStudentRequests(StudentRequest studentRequests) {
 		this.studentRequests = studentRequests;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	@Override
@@ -157,7 +179,5 @@ public class Student implements java.io.Serializable {
 			return false;
 		return true;
 	}
-
-	
 
 }

@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import com.ewaves.domain.ResponseVO;
 import com.ewaves.entities.HostelDetails;
+import com.ewaves.entities.LoginDetails;
 import com.ewaves.entities.Student;
 import com.ewaves.entities.StudentRequest;
 import com.ewaves.repository.PasswordTokenRepository;
@@ -127,7 +128,7 @@ public class EmailService {
 		return message;
 	}
 
-	public MimeMessage SendMail(HostelDetails requestVO, StudentRequest studentRequest) {
+	public MimeMessage sendStudentRequestMail(HostelDetails requestVO, StudentRequest studentRequest) {
 		StringBuilder result = new StringBuilder();
 		result.append("<p>Dear " + requestVO.getFirstName() + ",</p>");
 		result.append(
@@ -170,7 +171,7 @@ public class EmailService {
 
 	}
 
-	public MimeMessage sendRequestMail(HostelDetails details) {
+	public MimeMessage sendNewHostelRequestMail(HostelDetails details) {
 		
 		Session session = getEmailSession();
 		MimeMessage message = new MimeMessage(session);
@@ -193,6 +194,40 @@ public class EmailService {
 			 */
 			
 			String content="jkljljk";
+			message.setContent(content, emailContentType);
+		} catch (AddressException e) {
+			System.out.println("In constructResetTokenEmail : \n" + e.getMessage());
+
+		} catch (MessagingException e) {
+			System.out.println("In constructResetTokenEmail : \n" + e.getMessage());
+		}
+
+		return message;
+	}
+
+	public MimeMessage sendMailtoHostel(LoginDetails logindetails,String password) {
+		
+		Session session = getEmailSession();
+		MimeMessage message = new MimeMessage(session);
+		try {
+			message.setFrom(new InternetAddress(props.getProperty("mail.username")));
+
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(logindetails.getUsername()));
+
+			// final String url = contextPath + "/changepassword?id=" +
+			// user.getId() + "&token=" + token;
+			message.setSubject("Request For Add hostel", "UTF-8");
+			message.setHeader("Content-Type", "text/plain; charset=UTF-8");
+			String emailContentType = "text/html" + "; charset=UTF-8";
+			/*
+			 * String content = "Hi sir ," + " \r\n" +
+			 * "i required a room in ur hostel with below requirments" + " \r\n"
+			 * + "Name : " + requestVO.getFirstName() + " \r\n" + "Email" +
+			 * requestVO.getEmailId() + " \r\n" + " Share Perference :" +
+			 * studentRequest.getSharingPerference();
+			 */
+			
+			String content="jkljljk"+logindetails.getUsername()+"\n"+"password"+password;
 			message.setContent(content, emailContentType);
 		} catch (AddressException e) {
 			System.out.println("In constructResetTokenEmail : \n" + e.getMessage());

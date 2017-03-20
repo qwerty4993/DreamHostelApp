@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -39,7 +41,9 @@ public class HostelDetails implements Serializable {
 	private boolean nonVegetarian;
 	private boolean washingMachine;
 	private boolean hotWater;
-	
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "hostelDetails")
+	private LoginDetails user;
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hostelDetails", orphanRemoval = true)
@@ -138,6 +142,14 @@ public class HostelDetails implements Serializable {
 		this.state = state;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	public String getCountry() {
 		return country;
 	}
@@ -154,28 +166,12 @@ public class HostelDetails implements Serializable {
 		this.pinCode = pinCode;
 	}
 
-	public boolean getIsEnable() {
-		return isEnable;
+	public String getHostelFor() {
+		return hostelFor;
 	}
 
-	public void setEnable(boolean isEnable) {
-		this.isEnable = isEnable;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public List<StudentRequest> getStudentRequests() {
-		return studentRequests;
-	}
-
-	public void setStudentRequests(List<StudentRequest> studentRequests) {
-		this.studentRequests = studentRequests;
+	public void setHostelFor(String hostelFor) {
+		this.hostelFor = hostelFor;
 	}
 
 	public boolean isTv() {
@@ -188,14 +184,6 @@ public class HostelDetails implements Serializable {
 
 	public boolean isWifi() {
 		return wifi;
-	}
-
-	public String getHostelFor() {
-		return hostelFor;
-	}
-
-	public void setHostelFor(String hostelFor) {
-		this.hostelFor = hostelFor;
 	}
 
 	public void setWifi(boolean wifi) {
@@ -234,6 +222,22 @@ public class HostelDetails implements Serializable {
 		this.hotWater = hotWater;
 	}
 
+	public LoginDetails getUser() {
+		return user;
+	}
+
+	public void setUser(LoginDetails user) {
+		this.user = user;
+	}
+
+	public List<StudentRequest> getStudentRequests() {
+		return studentRequests;
+	}
+
+	public void setStudentRequests(List<StudentRequest> studentRequests) {
+		this.studentRequests = studentRequests;
+	}
+
 	public List<SharingDetails> getSharingDetails() {
 		return sharingDetails;
 	}
@@ -242,15 +246,14 @@ public class HostelDetails implements Serializable {
 		this.sharingDetails = sharingDetails;
 	}
 
-	@Override
-	public String toString() {
-		return "HostelDetails [hostelId=" + hostelId + ", hostelName=" + hostelName + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", emailId=" + emailId + ", address1="
-				+ address1 + ", address2=" + address2 + ", street=" + street + ", landmark=" + landmark + ", state="
-				+ state + ", city=" + city + ", country=" + country + ", pinCode=" + pinCode + ", hostelFor="
-				+ hostelFor + ", tv=" + tv + ", wifi=" + wifi + ", ac=" + ac + ", nonVegetarian=" + nonVegetarian
-				+ ", washingMachine=" + washingMachine + ", hotWater=" + hotWater + ", studentRequests="
-				+ studentRequests + ", sharingDetails=" + sharingDetails + ", isEnable=" + isEnable + "]";
+	public boolean getIsEnable() {
+		return isEnable;
 	}
 
+	public void setEnable(boolean isEnable) {
+		this.isEnable = isEnable;
+	}
+
+	
+	
 }

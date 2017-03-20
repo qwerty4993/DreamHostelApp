@@ -34,10 +34,11 @@ public class StudentRequest implements Serializable {
 	private Date insertedOn;
 	private Date UpdatedOn;
 	private Boolean isApproval;
-	@ManyToOne(cascade = CascadeType.MERGE)
+	
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	private HostelDetails hostelDetails;
 
-	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	private Student student;
 
 	public Integer getId() {

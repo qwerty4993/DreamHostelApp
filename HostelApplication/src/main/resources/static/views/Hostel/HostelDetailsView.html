@@ -38,7 +38,7 @@
 															style="word-break: break-all; display: inline-block;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{previewHostelDetails.address1}}</span>
 														</td>
 													</tr>
-													
+
 													<tr>
 														<td class="para">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{previewHostelDetails.address1}}</td>
 													</tr>
@@ -50,6 +50,7 @@
 														<td class="para">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{previewHostelDetails.city}},{{previewHostelDetails.country}}-{{previewHostelDetails.pinCode}}.</td>
 													</tr>
 												</tbody>
+
 											</table></td>
 									</tr>
 
@@ -86,5 +87,31 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			<div ng-show="{{previewHostelDetails.isEnable}} == false">
+			<button class="btn btn-primary" data-toggle="modal"
+									data-target="#featureDeletion"
+								title="Approve">
+								<i class="fa fa-check" aria-hidden="true">Approve</i> 
+							</button>
+			</div>
+			
 		</div>
 	</div>
+	<div class="modal fade" id="featureDeletion" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modal-header-danger">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Approve this hostel..?</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to Approve this  " {{previewHostelDetails.hostelName}} "..! </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" ng-click="approveHostel(previewHostelDetails.hostelId)">Approve</button>
+        <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -104,7 +104,7 @@ public class StudentService {
 		}
 
 		try {
-			MimeMessage message = emailService.SendMail(hostelDetails, userRequest);
+			MimeMessage message = emailService.sendStudentRequestMail(hostelDetails, userRequest);
 
 			Transport.send(message);
 		} catch (MessagingException e) {
