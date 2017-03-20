@@ -1,0 +1,167 @@
+
+
+<!-- werwer
+ -->
+
+<div id="page-wrapper" class="sign-in-wrapper">
+	<div class="graphs">
+		<div class="sign-up">
+			<h3>Student Register Form</h3>
+			<form ng-controller="studentCtrl" name="studentForm">
+				<h5>Personal Information</h5>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="firstName">First Name<span
+						ng-show="student.firstName == undefined ||student.firstName==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input type="text"
+							class="form-control" name="firstname"
+							placeholder="Enter your first name" ng-model="student.firstName">
+					</div>
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="lastName">Last Name<span
+						ng-show="student.lastName == undefined ||student.lastName==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input type="text"
+							class="form-control" name="lastName"
+							placeholder="Enter your last name" ng-model="student.lastName">
+					</div>
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Email ID <span
+						ng-show="student.email== undefined ||student.email==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-envelope"></i></span> <input type="email"
+							class="form-control" placeholder="Enter your Email ID"
+							ng-model="student.email">
+					</div>
+				</div>
+
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Contact No. <span
+						ng-show="student.phone == undefined ||student.phone==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-phone"></i></span> <input type="text"
+							class="form-control" ng-model="student.phone"
+							placeholder="Enter your contact no.">
+					</div>
+				</div>
+
+
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Date of Birth<span
+						ng-show="student.dob == undefined ||student.dob==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-calendar"></i></span> <input type="date"
+							class="form-control" ng-model="student.dob"
+							placeholder="Enter your DOB.">
+					</div>
+				</div>
+
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Gender</label>
+					<div class="input-group">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-default"> <input type="radio"
+								name="gender" value="male"> Male
+							</label> <label class="btn btn-default"> <input type="radio"
+								name="gender" value="female"> Female
+							</label>
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group col-md-12 col-sm-12">
+					<label>Address <span
+						ng-show="student.address == undefined ||student.address==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-home"></i></span> <input type="text"
+							class="form-control" ng-model="student.address" name="password"
+							placeholder="Enter address">
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+				<h6>Login Information</h6>
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Password <span
+						ng-show="user.password == undefined ||user.password==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-lock"></i></span> <input type="password"
+							class="form-control" ng-model="user.password" id="password"
+							name="password" placeholder="Choose password (5-15 chars)">
+					</div>
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Confirm Password <span
+						ng-show="student.confirmpassword == undefined ||student.confirmpassword==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-lock"></i></span> <input type="password"
+							class="form-control" id="confirmpassword" name="confirmpassword"
+							ng-model="student.confirmpassword"
+							placeholder="Confirm your password" valid-password-c required>
+						<span
+							ng-show="!studentForm.confirmpassword.$error.required && studentForm.confirmpassword.$error.noMatch && studentForm.user.password.$dirty">Passwords
+							do not match.</span>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="col-md-3">
+
+						<button class="btn btn-primary" my-Click-Once
+							ng-disabled="!student.firstName || !student.lastName ||!user.password ||!student.phone || !student.address"
+							class="btn btn-success" ng-click="addStudent(student)">submit</button>
+			</form>
+		</div>
+		<div class="sub_home_right">
+			<p>
+				Go Back to <a ng-click="goToHomePage()">Home</a>
+			</p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<!-- <div id="ascrail2000" class="nicescroll-rails"
+	style="width: 5px; z-index: 1000; background: rgb(66, 79, 99); cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; display: block; opacity: 0;">
+	<div
+		style="position: relative; top: 0px; float: right; width: 5px; height: 394px; background-color: rgb(39, 204, 228); border: 0px; background-clip: padding-box; border-radius: 10px;"></div>
+</div>
+<div id="ascrail2000-hr" class="nicescroll-rails"
+	style="height: 5px; z-index: 1000; background: rgb(66, 79, 99); position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 0;">
+	<div
+		style="position: relative; top: 0px; height: 5px; width: 1680px; background-color: rgb(39, 204, 228); border: 0px; background-clip: padding-box; border-radius: 10px;"></div>
+</div>
+ -->
+
