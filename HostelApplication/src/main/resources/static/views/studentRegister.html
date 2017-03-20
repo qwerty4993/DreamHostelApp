@@ -1,143 +1,170 @@
 
-<div class="container">
-<div class="col-xs-8">
-	<div class="panel panel-primary" style="margin: 20px;">
-		<div class="panel-heading">
-			<h3 class="panel-title">Student Registration Form</h3>
+
+<style>
+
+/*-- //sign-up --*/
+</style>
+
+
+<div id="page-wrapper" class="sign-in-wrapper">
+	<div class="graphs">
+		<div class="sign-up">
+			<h3>Student Register Form</h3>
+			<form ng-controller="studentCtrl" name="studentForm">
+				<h5>Personal Information</h5>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="firstName">First Name<span
+						ng-show="student.firstName == undefined ||student.firstName==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input type="text"
+							class="form-control" name="firstname"
+							placeholder="Enter your first name" ng-model="student.firstName">
+					</div>
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label for="lastName">Last Name<span
+						ng-show="student.lastName == undefined ||student.lastName==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input type="text"
+							class="form-control" name="lastName"
+							placeholder="Enter your last name" ng-model="student.lastName">
+					</div>
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Email ID <span
+						ng-show="student.email== undefined ||student.email==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-envelope"></i></span> <input type="email"
+							class="form-control" placeholder="Enter your Email ID"
+							ng-model="student.email">
+					</div>
+				</div>
+
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Contact No. <span
+						ng-show="student.phone == undefined ||student.phone==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-phone"></i></span> <input type="text"
+							class="form-control" ng-model="student.phone"
+							placeholder="Enter your contact no.">
+					</div>
+				</div>
+
+
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Date of Birth<span
+						ng-show="student.dob == undefined ||student.dob==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-calendar"></i></span> <input type="date"
+							class="form-control" ng-model="student.dob"
+							placeholder="Enter your DOB.">
+					</div>
+				</div>
+
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Gender</label>
+					<div class="input-group">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-default"> <input type="radio"
+								name="gender" value="male"> Male
+							</label> <label class="btn btn-default"> <input type="radio"
+								name="gender" value="female"> Female
+							</label>
+
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group col-md-12 col-sm-12">
+					<label>Address <span
+						ng-show="student.address == undefined ||student.address==''"
+						style="color: red">*</span></label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-home"></i></span> <input type="text"
+							class="form-control" ng-model="student.address" name="password"
+							placeholder="Enter address">
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+				<h6>Login Information</h6>
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Password <span
+						ng-show="user.password == undefined ||user.password==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-lock"></i></span> <input type="password"
+							class="form-control" ng-model="user.password" id="password"
+							name="password" placeholder="Choose password (5-15 chars)">
+					</div>
+				</div>
+
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Confirm Password <span
+						ng-show="student.confirmpassword == undefined ||student.confirmpassword==''"
+						style="color: red">*</span></label>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-lock"></i></span> <input type="password"
+							class="form-control" id="confirmpassword" name="confirmpassword"
+							ng-model="student.confirmpassword"
+							placeholder="Confirm your password" valid-password-c required>
+						<span
+							ng-show="!studentForm.confirmpassword.$error.required && studentForm.confirmpassword.$error.noMatch && studentForm.user.password.$dirty">Passwords
+							do not match.</span>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="col-md-3">
+
+						<button class="btn btn-primary" my-Click-Once
+							ng-disabled="!student.firstName || !student.lastName ||!user.password ||!student.phone || !student.address"
+							class="btn btn-success" ng-click="addStudent(student)">submit</button>
+			</form>
 		</div>
-
-		<div class="panel-body">
-			<div class="form-horizontal">
-				<form ng-controller="studentCtrl" name="studentForm">
-					<div class="form-group">
-						<label class="control-label col-sm-3">First Name<span
-							ng-show="student.firstName == undefined ||student.firstName==''"
-							style="color: red">*</span></label>
-						<div class="col-md-5 col-sm-8">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input type="text"
-									class="form-control" name="firstname"
-									placeholder="Enter your first name"
-									ng-model="student.firstName">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-3">Last Name <span
-							ng-show="student.lastName == undefined ||student.lastName==''"
-							style="color: red">*</span></label>
-						<div class="col-md-5 col-sm-8">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span> <input type="text"
-									class="form-control" name="lastame"
-									placeholder="Enter your last name" ng-model="student.lastName">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-3">Email ID <span
-							ng-show="student.email == undefined ||student.email==''"
-							style="color: red">*</span></label>
-						<div class="col-md-5 col-sm-8">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-envelope"></i></span> <input type="email"
-									class="form-control" placeholder="Enter your Email ID"
-									ng-model="student.email">
-							</div>
-						</div>
-					</div>
-
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">Password <span
-							ng-show="user.password == undefined ||user.password==''"
-							style="color: red">*</span></label>
-						<div class="col-md-5 col-sm-8">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-lock"></i></span> <input type="password"
-									class="form-control" ng-model="user.password" id="password"
-									name="password" placeholder="Choose password (5-15 chars)">
-							</div>
-						</div>
-					</div>
-					<!-- <div class="form-group">
-							<label class="control-label col-sm-3">Confirm Password <span
-								ng-show="student.confirmpassword == undefined ||student.confirmpassword==''"
-								style="color: red">*</span></label>
-							<div class="col-md-5 col-sm-8">
-								<div class="input-group">
-									<span class="input-group-addon"><i
-										class="glyphicon glyphicon-lock"></i></span> <input type="password"
-										class="form-control" id="confirmpassword"
-										name="confirmpassword" ng-model="student.confirmpassword"
-										placeholder="Confirm your password" valid-password-c required>
-										<span
-										ng-show="!studentForm.confirmpassword.$error.required && studentForm.confirmpassword.$error.noMatch && studentForm.user.password.$dirty">Passwords
-										do not match.</span>
-								</div>
-							</div>
-						</div> -->
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">Contact No. <span
-							ng-show="student.phone == undefined ||student.phone==''"
-							style="color: red">*</span></label>
-						<div class="col-md-5 col-sm-8">
-							<div class="input-group">
-								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-phone"></i></span> <input type="text"
-									class="form-control" ng-model="student.phone"
-									placeholder="Enter your contact no.">
-							</div>
-						</div>
-					</div>
-
-				
-
-					<!-- 	 <div class="form-group">
-							<label class="control-label col-sm-3">Gender </label>
-							<div class="col-md-8 col-sm-9">
-								<label> <input name="gender" type="radio"
-									ng-checked="selected=='male'" ng-true-value="'male'"
-									ng-model="student.gender"> Male
-								</label> <label> <input name="gender" type="radio"
-									ng-checked="selected=='female'" ng-true-value="'female'"
-									ng-model="student.gender"> Female
-								</label>
-							</div>
-						</div> -->
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">Address <span
-							ng-show="student.address == undefined ||student.address==''"
-							style="color: red">*</span></label>
-						<div class="col-md-5 col-sm-8">
-							<textarea rows="3" class="studAddress" ng-model="student.address"
-								placeholder="Enter your Address"></textarea>
-
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-xs-offset-3 col-xs-10">
-							<button type="submit" my-Click-Once
-								ng-disabled="!student.firstName || !student.lastName ||!user.password ||!student.phone || !student.address"
-								class="btn btn-success" ng-click="addStudent(student)">submit</button>
-
-
-							<button type="submit" class="btn btn-primary btn-flat"
-								ng-click="goToHomePage()">cancel</button>
-						</div>
-					</div>
-
-				</form>
-			</div>
-
-
-
+		<div class="sub_home_right">
+			<p>
+				Go Back to <a ng-click="goToHomePage()">Home</a>
+			</p>
 		</div>
-	</div></div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<!-- <div id="ascrail2000" class="nicescroll-rails"
+	style="width: 5px; z-index: 1000; background: rgb(66, 79, 99); cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; display: block; opacity: 0;">
+	<div
+		style="position: relative; top: 0px; float: right; width: 5px; height: 394px; background-color: rgb(39, 204, 228); border: 0px; background-clip: padding-box; border-radius: 10px;"></div>
+</div>
+<div id="ascrail2000-hr" class="nicescroll-rails"
+	style="height: 5px; z-index: 1000; background: rgb(66, 79, 99); position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 0;">
+	<div
+		style="position: relative; top: 0px; height: 5px; width: 1680px; background-color: rgb(39, 204, 228); border: 0px; background-clip: padding-box; border-radius: 10px;"></div>
+</div>
+ -->
+
