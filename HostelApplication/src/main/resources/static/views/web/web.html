@@ -1,12 +1,4 @@
 
-<script type="text/javascript">
-	function changeState(el) {
-		if (el.readOnly)
-			el.checked = el.readOnly = false;
-		else if (!el.checked)
-			el.readOnly = el.indeterminate = true;
-	}
-</script>
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -27,11 +19,12 @@
 				<li><a ui-sref="web.dialogverktyget">test3</a></li>
 				<li><a ui-sref="web.varfor">test4</a></li>
 				<li><a ui-sref="web.om-oss">test5</a></li>
-				<li><a ui-sref="web.kontakt">test6</a></li>
+				<li><a ui-sref="web.contact">Contact Us</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
+
 <!-- Large modal -->
 
 
@@ -44,17 +37,28 @@
 <main>
 <div ui-view></div>
 </main>
- <footer style="padding: 20px 0 10px;">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6">
-				
-			</div>
-		</div>
-	</div>
+ <footer >
+	<section id="footer3" class="footer3">
+    
+                <div class="dark">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3 text-center social">
+
+                               
+
+                                <span>We're social, come meet and meet us:</span><br>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-github"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div>
+
+                </div><!-- /.item -->
+
+            </section>
 </footer>
-<script>
-	$('#carousel-text').carousel({
-		interval : 1000
-	})
-</script>
+

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,11 +46,12 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
+	@RequestMapping(value = "/forgotPassword/{email}", method = RequestMethod.GET)
 	public @ResponseBody ResponseVO forgotPassword(final HttpServletRequest request,
-			@RequestParam("email") final String email) {
+			@PathVariable("email") final String email) {
+		System.out.println(email + ".com");
 
-		ResponseVO responseVO = emailSerive.forgotPasswordMail(email, request);
+		ResponseVO responseVO = emailSerive.forgotPasswordMail(email + ".com", request);
 
 		return responseVO;
 
@@ -75,29 +76,31 @@ public class LoginController {
 		return redirectView;
 	}
 
-	@RequestMapping(value = "/savePassword", method = RequestMethod.POST,
-	        consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, 
-	        produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-	public @ResponseBody ResponseVO savePassword(@RequestParam("newPassword") String newPassword) {
+	@RequestMapping(value = "/savePassword", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
+			MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public RedirectView savePassword(@RequestParam("newPassword") String newPassword,final HttpServletRequest request) {
+		RedirectView redirectView = new RedirectView();
 		String userName = null;
 		System.out.println(newPassword);
-		
+
 		System.out.println("123");
-		final  Object principal =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		System.out.println("jkjkjkjkj" + principal.toString());
 		if (principal instanceof Student) {
-			System.out.println("jjj");
+			
 			System.out.println("jkjkjkjkj" + newPassword);
-			userName = ((Student)principal).getUser().getUsername();
-			System.out.println("------------->\n"+userName);
+			userName = ((Student) principal).getUser().getUsername();
+			
 			passwordRestService.changeUserPassword(userName, newPassword);
-			
-			
+
+			final String redirectUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
+			+ "/views/updateSuccess.html";
+
+			redirectView.setUrl(redirectUrl);
 		}
-		System.out.println("jjjd");
-		
-		return null;
-		
+
+		return redirectView;
+
 	}
 
 }

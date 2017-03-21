@@ -11,6 +11,7 @@ public interface StudentRepository extends PagingAndSortingRepository<Student, L
 	Student findByphone(String phone);
 
 	Student findByEmail(String email);
+	
 	@Query("SELECT count(*) FROM Student")
 	String findCoun();
 

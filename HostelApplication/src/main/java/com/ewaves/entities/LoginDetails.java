@@ -26,8 +26,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Access(AccessType.PROPERTY)
 public class LoginDetails implements java.io.Serializable {
 
-	
-
 	private static final long serialVersionUID = 4228215049635115181L;
 	private Long id;
 	@JsonIgnore
@@ -45,8 +43,7 @@ public class LoginDetails implements java.io.Serializable {
 	private Role role;
 
 	public LoginDetails() {
-		
-		this.hostelDetails=new HostelDetails();
+
 	}
 
 	public LoginDetails(LoginDetails user) {
@@ -66,21 +63,19 @@ public class LoginDetails implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	public Student getStudent() {
 		return this.student;
 	}
 
-	
 	public void setStudent(Student student) {
 		this.student = student;
 	}
 
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	public HostelDetails getHostelDetails() {
 		return hostelDetails;
 	}
-
 
 	public void setHostelDetails(HostelDetails hostelDetails) {
 		this.hostelDetails = hostelDetails;
@@ -167,6 +162,7 @@ public class LoginDetails implements java.io.Serializable {
 		}
 
 	}
+
 	@Transient
 	public Long getHostelId() {
 		if (this.hostelDetails != null) {

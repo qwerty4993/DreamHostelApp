@@ -14,6 +14,11 @@ angular.module('hostelapp').service("loginService",
 				var log=$http.post(HOSTELAPP_CONSTANTS.DO_LOGIN(),loginDetails,config);
 				return log;
 			};
+			this.forgotPassword = function(email){
+				console.log(HOSTELAPP_CONSTANTS.FORGOT_PASSWORD()+email)
+				return $http.get(HOSTELAPP_CONSTANTS.FORGOT_PASSWORD()+email);
+			};
+			
 			
 
 		});

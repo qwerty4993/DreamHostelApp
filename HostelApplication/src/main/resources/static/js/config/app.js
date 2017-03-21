@@ -1,8 +1,6 @@
 var hostelapp = angular.module('hostelapp', [ 'ui.router', 'ngStorage', 'cgNotify' ]);
-hostelapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-	$httpProvider.defaults.useXDomain = true;
-	$httpProvider.defaults.headers.common = 'Content-Type: application/json';
-	delete $httpProvider.defaults.headers.common['X-Requested-With'];
+hostelapp.config(function($stateProvider, $urlRouterProvider) {
+
 	$stateProvider.state('studentRegister', {
 		templateUrl : 'views/studentRegister.html',
 		url : '/studentregistration'
@@ -30,6 +28,11 @@ hostelapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 		templateUrl : 'views/userDashboard.html',
 		url : '/userdashboard',
 		controller : 'dashboradCtrl'	
+	}).state('forgotPasswordPage', {
+		templateUrl : 'views/ForgotPassword.html',
+		url : '/forgotpassword',
+		controller : 'loginctrl'
+		
 	});
 })/*.run(function($rootScope, $localStorage, $location,$state) {
 	$rootScope.$on("$locationChangeStart", function(event, next, current) {

@@ -18,5 +18,9 @@ hostelapp.config(function($stateProvider, $urlRouterProvider) {
 			previewHostelDetails : null,
 		}
 
+	}).state('successRegister', {
+		templateUrl : 'views/successRegister.html',
+		url : 'success'
+		
 	});
 });

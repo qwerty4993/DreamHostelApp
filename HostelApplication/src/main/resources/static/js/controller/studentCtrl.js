@@ -24,11 +24,18 @@ angular.module('hostelapp').controller(
 					console.log(data.data);
 
 					if (data.data.statusCode == 201) {
+						$scope.goToHomePage();
 						notify({
 							message : "Successfully Registered",
 							classes : 'alert-primary',
-							duration : 1000
+							duration : 2000
 						})
+					}else{
+						notify({
+							message : data.data.statusDesc,
+							classes : 'alert-primary',
+							duration : 2000
+						});
 					}
 
 				});

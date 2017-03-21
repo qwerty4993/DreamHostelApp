@@ -5,11 +5,15 @@ hostelapp.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider.state('web', {
 		templateUrl : 'views/web/web.html',
 		url : '/',
-		abstract : true
-
+		abstract : true,
+		controller : 'webCtrl'
 	}).state('web.home', {
 		templateUrl : 'views/web/home.html',
 		url : 'home',
+		controller : 'webCtrl'
+	}).state('web.contact', {
+		templateUrl : 'views/web/contactus.html',
+		url : 'contactus',
 		controller : 'webCtrl'
 	});
 });

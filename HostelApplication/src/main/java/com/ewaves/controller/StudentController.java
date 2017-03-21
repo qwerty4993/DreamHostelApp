@@ -20,7 +20,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/studentregistration/", method = RequestMethod.POST)
 	public ResponseVO studentRegistration(@RequestBody Student employee) {
-	
+	System.out.println(employee.getGender());
 		
 		ResponseVO responseVO = studentService.studentRegistration(employee);
 		return responseVO;

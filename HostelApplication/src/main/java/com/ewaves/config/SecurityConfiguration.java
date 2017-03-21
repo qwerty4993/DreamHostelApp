@@ -41,9 +41,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.GET, "/views/**");
 		web.ignoring().antMatchers(HttpMethod.GET, "/login*");
-		web.ignoring().antMatchers(HttpMethod.GET, "/forgotPassword/*");
+		web.ignoring().antMatchers(HttpMethod.GET, "/forgotPassword*");
 		web.ignoring().antMatchers(HttpMethod.GET, "/changepassword/*");
 		web.ignoring().antMatchers(HttpMethod.POST, "/contactUs/");
+		
 		
 	}
 

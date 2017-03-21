@@ -1,8 +1,5 @@
 package com.ewaves.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,20 +20,24 @@ public class CountService {
 	@Autowired
 	private StudentRequestRepository studentRequestRepository;
 
-	public List<CounttVO> getAllCount() {
-		List<CounttVO> dbCountList = new ArrayList<CounttVO>();
-		String dbHostelRequestCount = hostelRepository.findCoun();
+	public CounttVO getAllCount() {
+		
+
+		String dbHostelNewRequestCount = hostelRepository.findCount();
+		String dbHostelActiveCount = hostelRepository.findHostelActiveCount();
 		String dbStudentCount = studentRepository.findCoun();
-		String dbStudentRequesCount=studentRequestRepository.finCount();
+		String dbStudentNewRequesCount=studentRequestRepository.finCount();
 		
 		
 		CounttVO count = new CounttVO();
-		count.setStudentRequestCount(dbStudentRequesCount);
-		count.setHostelCount(dbHostelRequestCount);
+		count.setStudentNewRequestCount(dbStudentNewRequesCount);
+		count.setHostelNewRequestCount(dbHostelNewRequestCount);
 		count.setStudentCount(dbStudentCount);
+		count.setHostelActiveCount(dbHostelActiveCount);
 		
-		dbCountList.add(count);
-		return dbCountList;
+		
+		
+		return count;
 	}
 
 }

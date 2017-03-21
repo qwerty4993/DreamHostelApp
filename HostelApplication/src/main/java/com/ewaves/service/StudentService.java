@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,6 +43,9 @@ public class StudentService {
 
 	@Autowired
 	private HostelRepository hostelRepository;
+	
+	@Autowired
+	private HttpServletRequest request;
 
 	public ResponseVO studentRegistration(Student studentVO) {
 
@@ -78,6 +82,9 @@ public class StudentService {
 		// user.setPassword(bCryptPasswordEncoder.encode(studentVO.getUser().getPassword()));
 		user.setPassword(passwordEncoder.encode(studentVO.getUser().getPassword()));
 		studentRepository.save(studentVO);
+		
+		
+		MimeMessage message=	emailService.sendStudentRegisterScusess(studentVO, request);
 
 		return HttpStatusCode.CREATED.getResponseVO("SUCCESS");
 

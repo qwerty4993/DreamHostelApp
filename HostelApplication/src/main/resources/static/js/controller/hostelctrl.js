@@ -6,6 +6,10 @@ angular.module('hostelapp').controller(
 			$scope.goToHomePage = function() {
 				$state.go('web.home');
 			};
+			$scope.goToSuccessPage = function() {
+				$state.go('successRegister');
+			};
+			
 			$scope.previewHostelDetails = $stateParams.previewHostelDetails;
 
 			$scope.goToHostelDetailsView = function(previewHostelDetails) {
@@ -93,13 +97,20 @@ angular.module('hostelapp').controller(
 				$http.post(url, $scope.hostel).then(function(data) {
 					console.log(data.data);
 
-					// if (data.data.statusCode == 201) {
-					// notify({
-					// message : "Successfully Registered",
-					// classes : 'alert-success',
-					// duration : 1000
-					// })
-					// }
+				 if (data.data.statusCode == 201) {
+					 $scope.goToSuccessPage();
+					 notify({
+					 message : "Successfully Registered",
+					 classes : 'alert-success',
+					duration : 1000
+					 })
+				 }else{
+						notify({
+							message : data.data.statusDesc,
+							classes : 'alert-primary',
+							duration : 1500
+						});
+					}
 
 				});
 

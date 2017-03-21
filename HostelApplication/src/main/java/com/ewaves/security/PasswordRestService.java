@@ -53,6 +53,7 @@ public class PasswordRestService {
 		System.out.println("In  changeUserPassword " + userName);
 		
 		LoginDetails  loginDetails=	loginRepository.findByUsername(userName);
+		System.out.println(loginDetails.getId());
 		loginDetails.setPassword(newPassword);
 		loginRepository.save(loginDetails);
 	}

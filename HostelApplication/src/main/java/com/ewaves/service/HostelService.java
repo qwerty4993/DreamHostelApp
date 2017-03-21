@@ -1,7 +1,5 @@
 package com.ewaves.service;
 
-import static org.mockito.Matchers.anyCollection;
-
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,6 +8,7 @@ import java.util.List;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -56,7 +55,7 @@ public class HostelService {
 		}
 		HostelDetails details = hostelRepossitory.save(hostelDeails);
 		try {
-			MimeMessage message = emailSerice.sendNewHostelRequestMail(details);
+			MimeMessage message = emailSerice.sendDetailsHostelManagerMail(details);
 
 			Transport.send(message);
 		} catch (MessagingException e) {
@@ -150,7 +149,7 @@ public class HostelService {
 
 	}
 
-	public HostelDetails approvalHostel(Long id) {
+	public HostelDetails approvalHostel(Long id,HttpServletRequest request) {
 		HostelDetails hostelDetails = hostelRepository.findOne(id);
 		if (hostelDetails == null) {
 			throw new RuntimeException("no hostel found with this id" + id);
@@ -177,7 +176,7 @@ public class HostelService {
 				hostelDetails.setEnable(true);
 				hostelRepository.save(hostelDetails);
 				try {
-					MimeMessage message = emailSerice.sendMailtoHostel(logindetails, password);
+					MimeMessage message = emailSerice.sendNewUserNametoHostelNamger(logindetails, password,request);
 
 					Transport.send(message);
 				} catch (MessagingException e) {

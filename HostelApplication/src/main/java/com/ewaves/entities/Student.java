@@ -34,17 +34,15 @@ public class Student implements java.io.Serializable {
 	private String lastName;
 	private String phone;
 	private String gender;
-	@Convert(converter = LocalDateConverter.class)
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	private Date dateOfBirth;
+	
+	private String dateOfBirth;
 	private String email;
 	private String address;
 	private Date insertedOn;
 	private Date modifiedOn;
-	
+
 	private LoginDetails user;
-	
+
 	private StudentRequest studentRequests;
 
 	@Id
@@ -85,7 +83,7 @@ public class Student implements java.io.Serializable {
 		this.address = address;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "student")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "student")
 	public LoginDetails getUser() {
 		return user;
 	}
@@ -130,7 +128,7 @@ public class Student implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "student")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "student")
 	public StudentRequest getStudentRequests() {
 		return studentRequests;
 	}
@@ -147,11 +145,11 @@ public class Student implements java.io.Serializable {
 		this.gender = gender;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

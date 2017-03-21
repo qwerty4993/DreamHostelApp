@@ -30,7 +30,9 @@ public interface HostelRepository extends CrudRepository<HostelDetails, Long>, J
 	// @Value("${spring.queries.roles-query}")
 	// private String rolesQuery;
 	
-	@Query("SELECT count(*) FROM HostelDetails")
-	String findCoun();
+	@Query("SELECT count(*) FROM HostelDetails where isEnable=false")
+	String findCount();
+	@Query("SELECT count(*) FROM HostelDetails where isEnable=true")
+	String findHostelActiveCount();
 
 }

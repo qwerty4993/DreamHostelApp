@@ -79,13 +79,17 @@
 
 
 
-						<div class="col-md-12">
-							<div style="margin-top: 10px" class="form-group">
+						<div class="col-md-12"><span class="col-md-6">
+									<a ng-click="gotoForgotPasswordPage()">ForgotPassword</a>
+								</span>
+							
+							<div class="col-md-6 form-group">
+							
 								<!-- Button -->
 
-								<div class="col-sm-12 controls">
-									<button class="btn btn-primary pull-right btn-sm"
-										ng-click="gotoDashBoard(loginDetails)">Login</button>
+								<div class="">
+								
+									<button class="btn btn-primary pull-right btn-sm" ng-click="gotoDashBoard(loginDetails)">Login</button>
 								</div>
 							</div>
 						</div>
@@ -96,8 +100,8 @@
 								Student Registration</a>
 						</div>
 						<div style="margin-bottom: 25px" class="input-group">
-							<a ui-sref="hostelRegister" class="hostelregister">New
-								Hostel Registration</a>
+							<a ui-sref="hostelRegister" class="hostelregister">New Hostel
+								Registration</a>
 						</div>
 						<!-- <ul class="">
 								<li><a href="javascript:void(0);" class="register"
@@ -117,6 +121,26 @@
 
 	</div>
 </div>
+<div class="container divider2">
+
+	<div class="col-md-12">
+
+		<div class="divider dashed">
+
+			<span><i class="fa fa-caret-down"></i></span>
+
+		</div>
+		<!-- /.divider -->
+
+	</div>
+	<!-- /.col -->
+
+</div>
+
+
+
+
+
 
 <script>
 	$('#carousel-text').carousel({

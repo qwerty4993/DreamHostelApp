@@ -1,8 +1,7 @@
 var hostelappConstants = function() {
 	var protocol = "http";
 	var host = "localhost";
-	/*var host = "localhost";*/
-	var port = 5000;  //
+	var port = 5000;  
 	var url = protocol + "://" + host + ":" + port + "/";
 	return {
 		PROTOCOL : protocol,
@@ -14,6 +13,8 @@ var hostelappConstants = function() {
 		},
 		ADD_HOSTEL : function() {
 			return url + "hostel";
+		},FORGOT_PASSWORD: function() {
+			return url + "forgotPassword/";
 		}
 	
 	}

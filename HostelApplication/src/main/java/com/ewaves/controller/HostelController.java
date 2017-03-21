@@ -2,6 +2,8 @@ package com.ewaves.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,22 +68,20 @@ public class HostelController {
 	}
 
 	@RequestMapping(value = "/approvalStudent/{id}", method = RequestMethod.GET)
-	public @ResponseBody HostelDetails approvalHostel(@PathVariable(value = "id") Long id) {
+	public @ResponseBody HostelDetails approvalHostel(@PathVariable(value = "id") Long id, HttpServletRequest request) {
 		System.out.println(id);
 
-		return hostelService.approvalHostel(id);
+		return hostelService.approvalHostel(id, request);
 
 	}
-	
+
 	@RequestMapping(value = "/hostelFilterVO", method = RequestMethod.POST)
-	public @ResponseBody List<HostelDetails> HostelFilter (@RequestBody HostelFilterVO hostelFilterVO) {
+	public @ResponseBody List<HostelDetails> HostelFilter(@RequestBody HostelFilterVO hostelFilterVO) {
 		System.out.println(hostelFilterVO);
-		List<HostelDetails> d=hostelService.hostelFilter(hostelFilterVO);
+		List<HostelDetails> d = hostelService.hostelFilter(hostelFilterVO);
 
 		return d;
 
 	}
-	
-	
 
 }

@@ -2,32 +2,50 @@ package com.ewaves.domain;
 
 public class CounttVO {
 
-	private String studentRequestCount;
-	private String studentrCount;
-	private String hostelCount;
+	private String studentNewRequestCount;
+	private String studentRequesActivetCount;
+	private String studentCount;
+	private String hostelNewRequestCount;
+	private String hostelActiveCount;
 
-	public String getStudentRequestCount() {
-		return studentRequestCount;
+	public String getStudentNewRequestCount() {
+		return studentNewRequestCount;
 	}
 
-	public void setStudentRequestCount(String studentRequestCount) {
-		this.studentRequestCount = studentRequestCount;
+	public void setStudentNewRequestCount(String studentNewRequestCount) {
+		this.studentNewRequestCount = studentNewRequestCount;
 	}
 
-	public String getStudentrCount() {
-		return studentrCount;
+	public String getStudentRequesActivetCount() {
+		return studentRequesActivetCount;
 	}
 
-	public void setStudentCount(String studentrCount) {
-		this.studentrCount = studentrCount;
+	public void setStudentRequesActivetCount(String studentRequesActivetCount) {
+		this.studentRequesActivetCount = studentRequesActivetCount;
 	}
 
-	public String getHostelCount() {
-		return hostelCount;
+	public String getStudentCount() {
+		return studentCount;
 	}
 
-	public void setHostelCount(String hostelCount) {
-		this.hostelCount = hostelCount;
+	public void setStudentCount(String studentCount) {
+		this.studentCount = studentCount;
+	}
+
+	public String getHostelNewRequestCount() {
+		return hostelNewRequestCount;
+	}
+
+	public void setHostelNewRequestCount(String hostelNewRequestCount) {
+		this.hostelNewRequestCount = hostelNewRequestCount;
+	}
+
+	public String getHostelActiveCount() {
+		return hostelActiveCount;
+	}
+
+	public void setHostelActiveCount(String hostelActiveCount) {
+		this.hostelActiveCount = hostelActiveCount;
 	}
 
 }

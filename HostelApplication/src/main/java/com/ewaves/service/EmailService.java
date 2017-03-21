@@ -25,6 +25,7 @@ import com.ewaves.entities.LoginDetails;
 import com.ewaves.entities.Student;
 import com.ewaves.entities.StudentRequest;
 import com.ewaves.repository.PasswordTokenRepository;
+import com.ewaves.repository.StudentRepository;
 import com.ewaves.util.HttpStatusCode;
 import com.ewaves.util.MailUI;
 
@@ -33,10 +34,12 @@ public class EmailService {
 
 	@Autowired
 	PasswordTokenRepository passwordTokenRepository;
-	@Autowired
-	private StudentService studentService;
+	/*@Autowired
+	private StudentService studentService;*/
 	@Autowired
 	private MailUI mailUI;
+	@Autowired
+	private StudentRepository studentRepository;
 
 	@Autowired
 	private PasswordTokenService PasswordTokenService;
@@ -71,8 +74,8 @@ public class EmailService {
 	public ResponseVO forgotPasswordMail(String email, HttpServletRequest request) {
 
 		try {
-			Student student = studentService.findStudentByEmail(email);
-			if (student == null) {
+			Student dbstudent = studentRepository.findByEmail(email);
+			if (dbstudent == null) {
 				// log.info("Invalid User Id" + user.getUserId());
 
 				// return "redirect:/login.html?lang=" +
@@ -81,10 +84,10 @@ public class EmailService {
 			}
 
 			String token = UUID.randomUUID().toString();
-			PasswordTokenService.createPasswordResetTokenForUser(student, token);
+			PasswordTokenService.createPasswordResetTokenForUser(dbstudent, token);
 			final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
 					+ request.getContextPath();
-			MimeMessage message = constructResetTokenEmail(appUrl, request.getLocale(), token, student);
+			MimeMessage message = constructResetTokenEmail(appUrl, request.getLocale(), token, dbstudent);
 			Transport.send(message);
 
 		} catch (final MessagingException mex) {
@@ -171,7 +174,7 @@ public class EmailService {
 
 	}
 
-	public MimeMessage sendNewHostelRequestMail(HostelDetails details) {
+	public MimeMessage sendDetailsHostelManagerMail(HostelDetails details) {
 		
 		Session session = getEmailSession();
 		MimeMessage message = new MimeMessage(session);
@@ -205,29 +208,46 @@ public class EmailService {
 		return message;
 	}
 
-	public MimeMessage sendMailtoHostel(LoginDetails logindetails,String password) {
+	public MimeMessage sendNewUserNametoHostelNamger(LoginDetails logindetails,String password,HttpServletRequest request) {
 		
 		Session session = getEmailSession();
 		MimeMessage message = new MimeMessage(session);
 		try {
 			message.setFrom(new InternetAddress(props.getProperty("mail.username")));
-
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(logindetails.getUsername()));
-
-			// final String url = contextPath + "/changepassword?id=" +
-			// user.getId() + "&token=" + token;
 			message.setSubject("Request For Add hostel", "UTF-8");
 			message.setHeader("Content-Type", "text/plain; charset=UTF-8");
 			String emailContentType = "text/html" + "; charset=UTF-8";
-			/*
-			 * String content = "Hi sir ," + " \r\n" +
-			 * "i required a room in ur hostel with below requirments" + " \r\n"
-			 * + "Name : " + requestVO.getFirstName() + " \r\n" + "Email" +
-			 * requestVO.getEmailId() + " \r\n" + " Share Perference :" +
-			 * studentRequest.getSharingPerference();
-			 */
-			
-			String content="jkljljk"+logindetails.getUsername()+"\n"+"password"+password;
+			final String url = "http://" + request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath()+ "/#/home";
+			String userNameTrim=logindetails.getUsername();
+			String[] a=userNameTrim.split("@");
+			System.out.println("-------------->"+a[0]);
+			String content=mailUI.sendMailTemplet(url, logindetails.getUsername(),a[0]).toString();
+			message.setContent(content, emailContentType);
+		} catch (AddressException e) {
+			System.out.println("In constructResetTokenEmail : \n" + e.getMessage());
+
+		} catch (MessagingException e) {
+			System.out.println("In constructResetTokenEmail : \n" + e.getMessage());
+		}
+
+		return message;
+	}
+
+	public MimeMessage sendStudentRegisterScusess(Student studentVO, HttpServletRequest request) {
+		
+		Session session = getEmailSession();
+		MimeMessage message = new MimeMessage(session);
+		try {
+			message.setFrom(new InternetAddress(props.getProperty("mail.username")));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(studentVO.getEmail()));
+			message.setSubject("Request For Add hostel", "UTF-8");
+			message.setHeader("Content-Type", "text/plain; charset=UTF-8");
+			String emailContentType = "text/html" + "; charset=UTF-8";
+			final String url = "http://" + request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath()+ "/home";
+			String content=mailUI.sendMailTemplet(url, studentVO.getEmail(),studentVO.getFirstName()).toString();
 			message.setContent(content, emailContentType);
 		} catch (AddressException e) {
 			System.out.println("In constructResetTokenEmail : \n" + e.getMessage());
