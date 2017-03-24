@@ -172,12 +172,26 @@
 
 .trip-item .item-body .item-footer .item-icon {
 	float: right;
-	color: #666;
+	color: #337ab7;
 }
 
 li.demo {
-    list-style-type: none;
-    }
+	list-style-type: none;
+}
+
+.washingmachine {
+	background: url('./images/washingmachine.png')  no-repeat;
+	display: block;
+}
+.nonveg {
+	background: url('./images/nonveg.png')  no-repeat;
+	display: block;
+}
+
+
+.fa-washingmachine:before, .fa-washingmachine:before {
+	background: url('./images/washingmachine.png') center no-repeat;
+}
 </style>
 <div class="page-header" ng-init="findAllHostel();">
 	<div class="container">
@@ -318,10 +332,10 @@ li.demo {
 					</div>
 					<div class="item-list">
 						<span class="glyphicon glyphicon-home" style="margin-top: 10px;">Address</span>
-						<ul >
+						<ul>
 							<li class="demo ">{{hostel.address1}},</li>
 							<li class="demo ">{{hostel.address1}},{{hostel.street}},</li>
-					
+
 							<li class="demo">{{hostel.state}},{{hostel.city}},</li>
 							<li class="demo">{{hostel.country}},{{hostel.pinCode}}</li>
 						</ul>
@@ -329,24 +343,34 @@ li.demo {
 					<div class="item-footer">
 
 						<div class="item-icon">
-							<i class="awe-icon awe-icon-gym"></i>d <i
-								class="awe-icon awe-icon-car"></i> d<i
-								class="awe-icon awe-icon-food"></i> d<i
-								class="awe-icon awe-icon-level"></i>d <i
-								class="awe-icon awe-icon-wifi">d</i>
+
+
+							<i ng-show="{{hostel.wifi}} == true" class="awe-icon fa fa-wifi"></i>
+							<i ng-show="{{hostel.tv}} == true"
+								class="awe-icon fa fa-television"></i> <i
+								ng-show="{{hostel.washingMachine}} == true"
+								><i class="washingmachine">&nbsp;
+							</i></i>
+							
+							 <i
+								ng-show="{{hostel.nonVegetarian}} == true"
+								><i class="nonveg">&nbsp;
+							</i></i>
+							<!-- <i class="washingmachine" id="">fd</i> -->
 						</div>
 					</div>
 				</div>
 				<div></div>
-				<div class="item-price-more">
-					<ul class="sharebox">
-						<li class="test">sdsd</li>
-						<li class="test">sdsd</li>
-						<li class="test">sdsd</li>
+				<div class="item-price-more" >
+				
+					<ul class="sharebox" ng-repeat=" item in hostel.sharingDetails">
+						<li class="test" >{{item.sharingType}}</li>
+						<li class="test">{{item.noOfPersonAvailability}}</li>
+						
 
 					</ul>
 					<div class="price"></div>
-					<a  class="awe-btn">Book now</a>
+					<a class="awe-btn">Book now</a>
 				</div>
 
 			</div>

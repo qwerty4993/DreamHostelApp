@@ -42,6 +42,8 @@ angular.module('hostelapp').controller(
 				$state.go('hostel.studenthostelRequestList');
 
 			};
+			
+			
 
 			$scope.hasFeature = function(name) {
 				var found;

@@ -5,10 +5,13 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  * @author Ewaves@Test
@@ -26,12 +29,14 @@ public class SharingDetails implements Serializable {
 	private Integer noOfPersonAvailability;
 	private Date insertedOn;
 	private Date UpdatedOn;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JsonBackReference
 	private HostelDetails hostelDetails;
+
 	public Integer getId() {
 		return id;
 	}
- 
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -44,8 +49,6 @@ public class SharingDetails implements Serializable {
 		this.sharingType = sharingType;
 	}
 
-
-	
 	public HostelDetails getHostelDetails() {
 		return hostelDetails;
 	}
@@ -76,6 +79,12 @@ public class SharingDetails implements Serializable {
 
 	public void setUpdatedOn(Date updatedOn) {
 		UpdatedOn = updatedOn;
+	}
+
+	@Override
+	public String toString() {
+		return "SharingDetails [id=" + id + ", sharingType=" + sharingType + ", noOfPersonAvailability="
+				+ noOfPersonAvailability + ", insertedOn=" + insertedOn + ", UpdatedOn=" + UpdatedOn + "]";
 	}
 
 }

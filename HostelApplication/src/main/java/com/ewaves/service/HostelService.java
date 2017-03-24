@@ -71,8 +71,8 @@ public class HostelService {
 		List<HostelDetails> list = (List<HostelDetails>) hostelRepossitory.findAll();
 		for (HostelDetails hostelDetails : list) {
 			if (hostelDetails.getIsEnable() == true) {
-				
-				
+
+			
 				finalDataList.add(hostelDetails);
 
 			}

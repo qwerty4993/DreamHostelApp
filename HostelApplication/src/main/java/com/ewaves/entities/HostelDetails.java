@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class HostelDetails implements Serializable {
@@ -51,7 +52,8 @@ public class HostelDetails implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hostelDetails", orphanRemoval = true)
 	private List<StudentRequest> studentRequests;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hostelDetails")
+	@OneToMany( fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "hostelDetails")
+	  @JsonManagedReference
 	private List<SharingDetails> sharingDetails;
 	
 	
