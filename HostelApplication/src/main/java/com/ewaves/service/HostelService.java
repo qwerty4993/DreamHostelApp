@@ -1,8 +1,8 @@
 package com.ewaves.service;
 
 import java.security.SecureRandom;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -71,6 +71,8 @@ public class HostelService {
 		List<HostelDetails> list = (List<HostelDetails>) hostelRepossitory.findAll();
 		for (HostelDetails hostelDetails : list) {
 			if (hostelDetails.getIsEnable() == true) {
+				
+				
 				finalDataList.add(hostelDetails);
 
 			}
@@ -120,7 +122,7 @@ public class HostelService {
 					&& sharingDetails.getNoOfPersonAvailability().toString().isEmpty()) {
 				return HttpStatusCode.FOUND.getResponseVO("avaliable");
 			}
-			sharingDetails.setInsertedOn(LocalDateTime.now());
+			sharingDetails.setInsertedOn(new Date());
 			sharingDetailList.add(sharingDetails);
 		}
 

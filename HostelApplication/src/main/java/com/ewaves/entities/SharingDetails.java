@@ -1,22 +1,19 @@
 package com.ewaves.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.ewaves.converter.LocalDateConverter;
-import com.ewaves.converter.LocalDateDeserializer;
-import com.ewaves.converter.LocalDateSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+/**
+ * @author Ewaves@Test
+ *
+ */
 @Entity
 public class SharingDetails implements Serializable {
 
@@ -27,17 +24,14 @@ public class SharingDetails implements Serializable {
 	private Integer id;
 	private Integer sharingType;
 	private Integer noOfPersonAvailability;
-	
-	@ManyToOne(cascade = CascadeType.MERGE)
+	private Date insertedOn;
+	private Date UpdatedOn;
+	@ManyToOne(cascade = CascadeType.ALL)
 	private HostelDetails hostelDetails;
-
-	private LocalDateTime insertedOn;
-	private LocalDateTime UpdatedOn;
-
 	public Integer getId() {
 		return id;
 	}
-
+ 
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -50,6 +44,8 @@ public class SharingDetails implements Serializable {
 		this.sharingType = sharingType;
 	}
 
+
+	
 	public HostelDetails getHostelDetails() {
 		return hostelDetails;
 	}
@@ -66,33 +62,20 @@ public class SharingDetails implements Serializable {
 		this.noOfPersonAvailability = noOfPersonAvailability;
 	}
 
-	@Convert(converter = LocalDateConverter.class)
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	public LocalDateTime getInsertedOn() {
+	public Date getInsertedOn() {
 		return insertedOn;
 	}
 
-	public void setInsertedOn(LocalDateTime insertedOn) {
+	public void setInsertedOn(Date insertedOn) {
 		this.insertedOn = insertedOn;
 	}
 
-	@Convert(converter = LocalDateConverter.class)
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	public LocalDateTime getUpdatedOn() {
+	public Date getUpdatedOn() {
 		return UpdatedOn;
 	}
 
-	public void setUpdatedOn(LocalDateTime updatedOn) {
+	public void setUpdatedOn(Date updatedOn) {
 		UpdatedOn = updatedOn;
-	}
-
-	@Override
-	public String toString() {
-		return "SharingDetails [id=" + id + ", sharingType=" + sharingType + ", noOfPersonAvailability="
-				+ noOfPersonAvailability + ", hostelDetails=" + hostelDetails + ", insertedOn=" + insertedOn
-				+ ", UpdatedOn=" + UpdatedOn + "]";
 	}
 
 }

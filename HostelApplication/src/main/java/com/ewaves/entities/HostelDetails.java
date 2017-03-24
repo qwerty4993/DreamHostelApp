@@ -1,6 +1,7 @@
 package com.ewaves.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -50,8 +51,16 @@ public class HostelDetails implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hostelDetails", orphanRemoval = true)
 	private List<StudentRequest> studentRequests;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hostelDetails", orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hostelDetails")
 	private List<SharingDetails> sharingDetails;
+	
+	
+	
+
+	public HostelDetails() {
+		
+		sharingDetails = new ArrayList<SharingDetails>();
+	}
 
 	private boolean isEnable;
 
