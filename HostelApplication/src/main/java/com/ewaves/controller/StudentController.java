@@ -20,7 +20,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/studentregistration/", method = RequestMethod.POST)
 	public ResponseVO studentRegistration(@RequestBody Student employee) {
-	System.out.println(employee.getGender());
+	System.out.println(employee.getDateOfBirth());
 		
 		ResponseVO responseVO = studentService.studentRegistration(employee);
 		return responseVO;
@@ -28,6 +28,7 @@ public class StudentController {
 	
 	@RequestMapping(value = "/user/userRequest", method = RequestMethod.POST)
 	public @ResponseBody ResponseVO userRequest(@RequestBody StudentRequest userRequest) {
+		
 		System.out.println("In usercontroller : \n " + userRequest.toString());
 
 		ResponseVO responseVO = studentService.addUserRequest(userRequest);

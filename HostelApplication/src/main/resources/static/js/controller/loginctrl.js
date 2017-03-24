@@ -39,12 +39,12 @@ angular
 								.post(url, $scope.loginDetails)
 								.then(
 										function(data) {
-											console.log(data.data);
-
+											console.log(data.data.responseObjects);
+											
 											if (data.data.statusCode == 200) {
 												if (data.data.responseObjects.role.name == 'admin') {
-													console
-															.log(data.data.responseObjects.role.features)
+													console.log(data.data.responseObjects.role.features)
+													
 													$state
 															.go('hostel.dashboard');
 												} else {
@@ -75,10 +75,7 @@ angular
 					$scope.goToHomePage = function() {
 						$state.go('web.home');
 					}
-					$scope.gotoResetPassword = function(rest) {
-						console.log(rest)
-						
-					}
+					
 					$scope.gotoForgotPasswordPage = function() {
 						$state.go('forgotPasswordPage');
 
@@ -104,4 +101,11 @@ angular
 											}
 										});
 					}
+					
+					$scope.gotoResetPassword = function(rest) {
+						console.log(rest)
+						
+					}
+					
+					
 				});

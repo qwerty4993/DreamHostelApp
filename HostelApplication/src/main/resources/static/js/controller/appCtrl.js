@@ -37,6 +37,11 @@ angular.module('hostelapp').controller(
 				$state.go('hostel.profileView');
 
 			};
+			
+		$scope.goToStudentHostelRequestListPage = function() {
+				$state.go('hostel.studenthostelRequestList');
+
+			};
 
 			$scope.hasFeature = function(name) {
 				var found;
@@ -60,6 +65,7 @@ angular.module('hostelapp').controller(
 
 				history.go(backlen); // Return at the beginning
 				$state.go('web.home');
+				
 			};
 
 		});

@@ -4,16 +4,9 @@ hostelapp.config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider.state('studentRegister', {
 		templateUrl : 'views/studentRegister.html',
 		url : '/studentregistration'
-
-	});
-	$stateProvider.state('hostelRegister', {
+	}).state('hostelRegister', {
 		templateUrl : 'views/hostelRegister.html',
 		url : '/hostelregistration'
-
-	});
-	$stateProvider.state('studentDashboard', {
-		templateUrl : 'views/studentDashboard.html',
-		url : '/studentDashboard'
 
 	}).state('hostel', {
 		abstract : true,
@@ -33,17 +26,19 @@ hostelapp.config(function($stateProvider, $urlRouterProvider) {
 		url : '/forgotpassword',
 		controller : 'loginctrl'
 		
+	}).state('restpassword', {
+		templateUrl : 'views/updatePassword.html',
+		url : '/restpassword',
+		controller : 'loginctrl'
+		
 	});
 })/*.run(function($rootScope, $localStorage, $location,$state) {
 	$rootScope.$on("$locationChangeStart", function(event, next, current) {
 		console.log($state.current);
-		if($state.current.name=='resetPassword'){
-			alert($state.current.name);
-		}
-		if($state.current.name!='resetPassword'){
+		if($state.current.name!='restpassword'){
 			
-			if ($localStorage.authorization == undefined) {
-				$location.path('/hem');
+			if ($localStorage.user == undefined) {
+				$location.path('/home');
 			}
 		}
 	});

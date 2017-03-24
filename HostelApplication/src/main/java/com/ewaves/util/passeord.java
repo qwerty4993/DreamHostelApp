@@ -1,12 +1,8 @@
 package com.ewaves.util;
 
-import java.security.SecureRandom;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 public class passeord {
 	
-	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	/*static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	static SecureRandom rnd = new SecureRandom();
 	static String randomString( int len ){
 		   StringBuilder sb = new StringBuilder( len );
@@ -29,7 +25,7 @@ public class passeord {
 
 	
 	}
-	
+	*/
 	
 	
 	

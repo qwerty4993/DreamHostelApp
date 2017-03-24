@@ -9,7 +9,7 @@ angular.module('hostelapp').controller(
 			$scope.goToSuccessPage = function() {
 				$state.go('successRegister');
 			};
-			
+
 			$scope.previewHostelDetails = $stateParams.previewHostelDetails;
 
 			$scope.goToHostelDetailsView = function(previewHostelDetails) {
@@ -17,7 +17,7 @@ angular.module('hostelapp').controller(
 					previewHostelDetails : previewHostelDetails
 				});
 			}
-			
+
 			$scope.goToHostelRequestList = function() {
 				$state.go('hostel.HostelRequestList');
 			}
@@ -93,26 +93,44 @@ angular.module('hostelapp').controller(
 				}
 				$scope.hostel.role = $scope.role;
 				console.log($scope.hostel);
-				var url = HOSTELAPP_CONSTANTS.URL + "hostel/hostelrequest";
-				$http.post(url, $scope.hostel).then(function(data) {
-					console.log(data.data);
 
-				 if (data.data.statusCode == 201) {
-					 $scope.goToSuccessPage();
-					 notify({
-					 message : "Successfully Registered",
-					 classes : 'alert-success',
-					duration : 1000
-					 })
-				 }else{
-						notify({
-							message : data.data.statusDesc,
-							classes : 'alert-primary',
-							duration : 1500
-						});
+				/*var count = 0;
+				angular.forEach(hostel, function(hostel) {
+					if (hostel.tv == true || hostel.wifi == true
+							|| hostel.ac == true || hostel.hotWater == true
+							|| hostel.washingMachine == true) {
+						count++;
 					}
+				})
+				if (count >= 1) {*/
+					var url = HOSTELAPP_CONSTANTS.URL + "hostel/hostelrequest";
+					$http.post(url, $scope.hostel).then(function(data) {
+						console.log(data.data);
 
-				});
+						if (data.data.statusCode == 201) {
+							$scope.goToSuccessPage();
+							notify({
+								message : "Successfully Registered",
+								classes : 'alert-success',
+								duration : 1000
+							})
+						} else {
+							notify({
+								message : data.data.statusDesc,
+								classes : 'alert-primary',
+								duration : 1500
+							});
+						}
+
+					});
+				/*} else {
+					notify({
+						message : 'please select atleat 2 in Preferences',
+						classes : 'alert-primary',
+						duration : 1500
+					});
+
+				}*/
 
 			};
 

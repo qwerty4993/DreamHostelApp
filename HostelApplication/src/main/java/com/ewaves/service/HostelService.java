@@ -149,7 +149,7 @@ public class HostelService {
 
 	}
 
-	public HostelDetails approvalHostel(Long id,HttpServletRequest request) {
+	public HostelDetails approvalHostel(Long id, HttpServletRequest request) {
 		HostelDetails hostelDetails = hostelRepository.findOne(id);
 		if (hostelDetails == null) {
 			throw new RuntimeException("no hostel found with this id" + id);
@@ -176,7 +176,7 @@ public class HostelService {
 				hostelDetails.setEnable(true);
 				hostelRepository.save(hostelDetails);
 				try {
-					MimeMessage message = emailSerice.sendNewUserNametoHostelNamger(logindetails, password,request);
+					MimeMessage message = emailSerice.sendNewUserNametoHostelNamger(logindetails, password, request);
 
 					Transport.send(message);
 				} catch (MessagingException e) {
@@ -202,7 +202,8 @@ public class HostelService {
 	public List<HostelDetails> hostelFilter(HostelFilterVO hostelFilterVO) {
 		List<HostelDetails> finalDetails = new ArrayList<>();
 		List<HostelDetails> lsDetails = hostelRepository.getCityState(hostelFilterVO.getFromCityName(),
-				hostelFilterVO.getFromStateName(), hostelFilterVO.isTv());
+				hostelFilterVO.getFromStateName(), hostelFilterVO.isTv(), hostelFilterVO.isNonVegetarian(),
+				hostelFilterVO.isWashingMachine());
 		for (HostelDetails hostelDetails : lsDetails) {
 
 			finalDetails.add(hostelDetails);

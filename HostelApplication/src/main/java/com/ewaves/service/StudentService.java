@@ -43,7 +43,7 @@ public class StudentService {
 
 	@Autowired
 	private HostelRepository hostelRepository;
-	
+
 	@Autowired
 	private HttpServletRequest request;
 
@@ -75,17 +75,23 @@ public class StudentService {
 			}
 
 			LoginDetails user1 = studentVO.getUser();
+			user1.setInsertedOn(new Date());
 			System.out.println(dbRole.toString());
 			user1.setRole(dbRole);
 			studentVO.setUser(user1);
 		}
+		user.setInsertedOn(new Date());
 		// user.setPassword(bCryptPasswordEncoder.encode(studentVO.getUser().getPassword()));
 		user.setPassword(passwordEncoder.encode(studentVO.getUser().getPassword()));
 		studentRepository.save(studentVO);
-		
-		
-		MimeMessage message=	emailService.sendStudentRegisterScusess(studentVO, request);
 
+		try {
+			MimeMessage message = emailService.sendStudentRegisterScusess(studentVO, request);
+			Transport.send(message);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			return HttpStatusCode.NON_AUTHORITATIVE_INFORMATION.getResponseVO("Mail Not Sent");
+		}
 		return HttpStatusCode.CREATED.getResponseVO("SUCCESS");
 
 	}

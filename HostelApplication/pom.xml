@@ -6,7 +6,6 @@
 	<groupId>com.ewaves</groupId>
 	<artifactId>HostelApplication</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
 
 	<name>HostelApplication</name>
 
@@ -78,4 +77,5 @@
 
 
 	<description>HostelApplication</description>
+	<packaging>war</packaging>
 </project>

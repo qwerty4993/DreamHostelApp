@@ -30,6 +30,7 @@ public class HostelDetails implements Serializable {
 	private String address2;
 	private String street;
 	private String landmark;
+	private String area;
 	private String state;
 	private String city;
 	private String country;
@@ -40,9 +41,9 @@ public class HostelDetails implements Serializable {
 	private boolean ac;
 	private boolean nonVegetarian;
 	private boolean washingMachine;
-	private boolean hotWater;
+
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "hostelDetails")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "hostelDetails")
 	private LoginDetails user;
 
 	@JsonIgnore
@@ -214,14 +215,6 @@ public class HostelDetails implements Serializable {
 		this.washingMachine = washingMachine;
 	}
 
-	public boolean isHotWater() {
-		return hotWater;
-	}
-
-	public void setHotWater(boolean hotWater) {
-		this.hotWater = hotWater;
-	}
-
 	public LoginDetails getUser() {
 		return user;
 	}
@@ -254,6 +247,12 @@ public class HostelDetails implements Serializable {
 		this.isEnable = isEnable;
 	}
 
-	
-	
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
 }

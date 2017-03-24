@@ -10,7 +10,7 @@
 <div class="container">
 	<div class="row text-center"
 		style="margin-top: 20px; margin-bottom: 20px;"
-		ng-show="hasFeature('ROOMS').allowRead == true">
+		ng-show="hasFeature('USERREQUEST').allowRead == true">
 		<a ng-click="goToRoomListPage()" class="category1">
 			<div class="col-sm-4">
 				<div class="panel panel-default">
@@ -20,7 +20,61 @@
 								style="color: #FE89A2; border: solid 1px #FE4365;"></i>
 							
 						</p>
-						<h5>ROOM</h5>
+						<h5>USER REQUEST LIST</h5>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="row text-center"
+		style="margin-top: 20px; margin-bottom: 20px;"
+		ng-show="hasFeature('USERNEWRQUEST').allowRead == true">
+		<a ng-click="goToRoomListPage()" class="category1">
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>
+							<i class="de_icon glyphicon glyphicon-bed  circle large fa-2x"
+								style="color: #FE89A2; border: solid 1px #FE4365;"></i>
+							
+						</p>
+						<h5>NEW USER REQUEST</h5>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="row text-center"
+		style="margin-top: 20px; margin-bottom: 20px;"
+		ng-show="hasFeature('STUDENTHOSTELREQUEST').allowRead == true">
+		<a ng-click="goToStudentHostelRequestListPage()" class="category1">
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>
+							<i class="de_icon glyphicon glyphicon-bed  circle large fa-2x"
+								style="color: #FE89A2; border: solid 1px #FE4365;"></i>
+							
+						</p>
+						<h5>ADD  HOSTEL REQUEST</h5>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="row text-center"
+		style="margin-top: 20px; margin-bottom: 20px;"
+		ng-show="hasFeature('ROOMDETAILS').allowRead == true">
+		<a ng-click="goToRoomListPage()" class="category1">
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>
+							<i class="de_icon glyphicon glyphicon-bed  circle large fa-2x"
+								style="color: #FE89A2; border: solid 1px #FE4365;"></i>
+							
+						</p>
+						<h5>ADD New ROOM</h5>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@
 		<div class="sign-up">
 			<h3>Hostel Register Form</h3>
 			<form ng-controller="hostelCtrl">
-<div class="form-group col-md-12 col-sm-12">
+				<div class="form-group col-md-12 col-sm-12">
 					<label>Hostel Name<span
 						ng-show="hostel.hostelName == undefined ||hostel.hostelName==''"
 						style="color: red">*</span></label>
@@ -73,7 +73,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-th"></i></span> <input type="text"
-							class="form-control " placeholder="Enter address" ng-model="hostel.address1">
+							class="form-control " placeholder="Enter address"
+							ng-model="hostel.address1">
 					</div>
 				</div>
 
@@ -84,7 +85,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-th"></i></span> <input type="text"
-							class="form-control " placeholder="Enter address" ng-model="hostel.address2">
+							class="form-control " placeholder="Enter address"
+							ng-model="hostel.address2">
 					</div>
 				</div>
 
@@ -99,6 +101,14 @@
 							class="glyphicon glyphicon-road"></i></span> <input type="text"
 							class="form-control " placeholder="Street"
 							ng-model="hostel.street">
+					</div>
+				</div>
+				<div class="form-group col-md-6 col-sm-6">
+					<label>Area</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-screenshot"></i></span> <input type="text"
+							class="form-control " placeholder="area*" ng-model="hostel.area">
 					</div>
 				</div>
 
@@ -142,7 +152,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-th-large"></i></span> <input type="text"
-							class="form-control " placeholder="Country" ng-model="hostel.country">
+							class="form-control " placeholder="Country"
+							ng-model="hostel.country">
 					</div>
 				</div>
 
@@ -153,18 +164,19 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-pushpin"></i></span> <input type="text"
-							class="form-control " placeholder="pincode" ng-model="hostel.pinCode">
+							class="form-control " placeholder="pincode"
+							ng-model="hostel.pinCode">
 					</div>
 				</div>
 
-				<div class="form-group col-md-6 col-sm-12">
+				<div class="form-group col-md-6 col-sm-6">
 					<label>Hostel For:</label>
 					<div class="input-group">
-						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-default"> <input type="radio"
-								name="gender" value="male"> Male
-							</label> <label class="btn btn-default"> <input type="radio"
-								name="gender" value="female"> Female
+						<div>
+							<label> <input type="radio" ng-model="hostel.hostelFor"
+								value="male"> Male
+							</label> <label> <input type="radio" ng-model="hostel.hostelFor"
+								value="female"> Female
 							</label>
 
 						</div>
@@ -174,45 +186,49 @@
 				<div class="form-group col-md-12 col-sm-12">
 					<label for="firstName">Preferences</label>
 					<div class="input-group">
-						<div class="btn-group" data-toggle="buttons">
-							<label class="btn btn-default"> <input type="radio"
-								ng-model="hostel.wifi"> TV
-							</label> <label class="btn btn-default"> <input type="checkbox"
-								ng-model="hostel.wifi"> WI-FI
-							</label><label class="btn btn-default"> <input type="checkbox"
-								ng-model="hostel.ac"> AC
-							</label><label class="btn btn-default"> <input type="checkbox"
-								ng-model="hostel.hotWater">Hot WATER
-							</label> <label class="btn btn-default"> <input type="checkbox"
-								ng-model="hostel.nonVegetarian"> Non-Vegetarian
-							</label><label class="btn btn-default"> <input type="checkbox"
-								ng-model="hostel.washingMachine"> Washing Machine
-							</label>
-						</div>
+
+						<label class="btn btn-default"> <input type="checkbox"
+							ng-model="hostel.tv"> TV
+						</label> &nbsp;<label class="btn btn-default"> <input
+							type="checkbox" ng-model="hostel.wifi"> WI-FI
+						</label>&nbsp;<label class="btn btn-default"> <input
+							type="checkbox" ng-model="hostel.ac"> AC
+						</label> &nbsp;<label class="btn btn-default"> <input
+							type="checkbox" ng-model="hostel.nonVegetarian">
+							Non-Vegetarian
+						</label>&nbsp;<label class="btn btn-default"> <input
+							type="checkbox" ng-model="hostel.washingMachine"> Washing
+							Machine
+						</label>
+
 					</div>
 				</div>
 
-				
+
 
 				<div class="form-group">
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6">
 
 						<button type="submit" class="btn btn-success btn-flat"
-						ng-disabled="!hostel.hostelName||!hostel.firstName||!hostel.lastName||!hostel.phoneNumber||!hostel.emailId||!hostel.address1
+							ng-disabled="!hostel.hostelName||!hostel.firstName||!hostel.lastName||!hostel.phoneNumber||!hostel.emailId||!hostel.address1
 						||!hostel.street||!hostel.state||!hostel.city||!hostel.country||!hostel.pinCode"
-						ng-click="addHostel(hostel);">
-						Submit</i>
-					</button>
+							ng-click="addHostel(hostel);">
+							Submit</i>
+						</button>
 
-					<button type="reset" class="btn btn-primary btn-flat"
-						ng-click="resetForm()">Reset</button>
-				</form>
+						<button type="reset" class="btn btn-primary btn-flat"
+							ng-click="resetForm()">Reset</button>
+
+					</div>
+					<div class="sub_home_right">
+						<p>
+							Go Back to <a ng-click="goToHomePage()">Home</a>
+						</p>
+					</div>
+				</div>
+			</form>
 		</div>
-		<div class="sub_home_right">
-			<p>
-				Go Back to <a ng-click="goToHomePage()">Home</a>
-			</p>
-		</div>
+
 		<div class="clearfix"></div>
 	</div>
 </div>

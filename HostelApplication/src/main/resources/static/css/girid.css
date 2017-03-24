@@ -199,6 +199,7 @@ i.glyphicon-shopping-cart {
 	padding: .5em;
 	margin-top: 1em;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .four-grid2 {

@@ -1,0 +1,171 @@
+<style>
+.panel-title .accordion-toggle:after {
+	/* symbol for "opening" panels */
+	font-family: 'Glyphicons Halflings';
+	/* essential for enabling glyphicon */
+	content: "\e114"; /* adjust as needed, taken from bootstrap.css */
+	float: right; /* adjust as needed */
+	color: grey; /* adjust as needed */
+}
+
+.panel-title .accordion-toggle.collapsed:after {
+	/* symbol for "collapsed" panels */
+	content: "\e080"; /* adjust as needed, taken from bootstrap.css */
+}
+
+#mybtn-red {
+	color: red;
+}
+
+#mybtn-green {
+	color: green;
+}
+</style>
+<div class="page-header" ng-init="findAllHostel();">
+	<div class="container">
+		<ol class="breadcrumb1">
+			<li class="active"><i class="glyphicon glyphicon-bed ">&nbsp;</i>Search
+				Hostel</li>
+		</ol>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">List</div>
+				<div class="table-responsive">
+					<!-- <table class="table table-striped">
+						<thead><input type="text" ng-model="test" class="form-control">
+						 <div class="form-group">
+              <label for="state" class="control-label">City</label>
+               <select name='state'   class="form-control" ng-disabled="!cities" ng-model="test"><option value="">Select</option> <option ng-repeat="city in cities" value='{{city}}'>{{city}}</option></select>        
+            </div>
+							<tr>
+								<th>#</th>
+								<th>Namn</th>
+								<th class="text-center">Redigera/Radera</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="hostel in hostelDetailsList | filter:test">
+								<td>{{$index+1}}</td>
+								<td>{{hostel.hostelName}}</td>
+								<td class="text-center"><div class="btn-group">
+										<button class="btn btn-xs btn-primary"
+											ng-click="goToUpdateGroupPage();"
+											title="View">
+											<i class="fa fa-pencil" aria-hidden="true">View </i>
+										</button>
+										
+									</div></td>
+							</tr>
+						</tbody>
+					</table> -->
+<input type="search">
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>HostelName</th>
+									<th>Address</th>
+									<th>TV</th>
+									<th>AC</th>
+									<th>WIFI</th>
+									<th>NonVegetarian</th>
+									<th>washingMachine</th>
+									<th>Contact</th>
+									<th>Select</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="hostel in hostelDetailsList | filter:test">
+									<td>{{$index+1}}</td>
+									<td>{{hostel.hostelName}}</td>
+									<td>{{hostel.address1}},{{hostel.street}},</br>
+										{{hostel.state}},{{hostel.city}},</br>
+										{{hostel.country}},{{hostel.pinCode}}.
+									</td>
+									<td class="mybtn-blue"><div id="mybtn-green"
+											ng-show="{{hostel.tv}} == true">
+											<i class="glyphicon glyphicon-ok"></i>
+										</div>
+										<div id="mybtn-red" ng-show="{{hostel.tv}} == false">
+											<i class="glyphicon glyphicon-remove"></i>
+										</div></td>
+									<td class="mybtn-blue"><div id="mybtn-green"
+											ng-show="{{hostel.ac}} == true">
+											<i class="glyphicon glyphicon-ok"></i>
+										</div>
+										<div id="mybtn-red" ng-show="{{hostel.ac}} == false">
+											<i class="glyphicon glyphicon-remove"></i>
+										</div></td>
+									<td class="mybtn-blue"><div id="mybtn-green"
+											ng-show="{{hostel.wifi}} == true">
+											<i class="glyphicon glyphicon-ok"></i>
+										</div>
+										<div id="mybtn-red" ng-show="{{hostel.wifi}} == false">
+											<i class="glyphicon glyphicon-remove"></i>
+										</div></td>
+									<td class="mybtn-blue"><div id="mybtn-green"
+											ng-show="{{hostel.nonVegetarian}} == true">
+											<i class="glyphicon glyphicon-ok"></i>
+										</div>
+										<div id="mybtn-red"
+											ng-show="{{hostel.nonVegetarian}} == false">
+											<i class="glyphicon glyphicon-remove"></i>
+										</div></td>
+									<td class="mybtn-blue"><div id="mybtn-green"
+											ng-show="{{hostel.washingMachine}} == true">
+											<i class="glyphicon glyphicon-ok"></i>
+										</div>
+										<div id="mybtn-red" class="text-center"
+											ng-show="{{hostel.washingMachine}} == false">
+											<i class="glyphicon glyphicon-remove"></i>
+										</div></td>
+									<td><span class="glyphicon glyphicon-envelope"
+										aria-hidden="true"></span>{{hostel.emailId}},</br>
+									<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;{{hostel.phoneNumber}}</td>
+									<td class="text-center"><button
+											class="btn btn-xs btn-primary"
+											ng-click="goToUpdateRolePage(role);" title="Edit">
+											<i class="glyphicon glyphicon-ok" aria-hidden="true">&nbsp;SELECT</i>
+										</button></td>
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="companyDeletion" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header modal-header-danger">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Vill du verkligen ta bort?</h4>
+			</div>
+			<div class="modal-body">
+				<p>Genom att ta bort av gruppen, De anställda som är knutna till
+					företaget " {{deleteGroup.name}} " kommer att tas bort.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal"
+					ng-click="confirmDelete()">Ok</button>
+				<button type="button" class="btn btn-link" data-dismiss="modal">Stänga</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

@@ -1,5 +1,6 @@
 package com.ewaves.controller;
 
+import java.io.IOException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 ///import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -58,8 +60,8 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/changepassword", method = RequestMethod.GET)
-	public RedirectView showChangePasswordPage(final Locale locale, final HttpServletRequest request,
-			@RequestParam("id") final long id, @RequestParam("token") final String token) {
+	public ModelAndView showChangePasswordPage(final Locale locale, final HttpServletRequest request,
+			@RequestParam("id") final long id, @RequestParam("token") final String token) throws IOException {
 		System.out.println("In showChangePasswordPage -------->\n" + token);
 		final Student result = passwordRestService.validatePasswordResetToken(id, token);
 		RedirectView redirectView = new RedirectView();
@@ -70,10 +72,10 @@ public class LoginController {
 
 		}
 		final String redirectUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
-				+ "/views/updatePassword.html?lang=" + locale.getLanguage();
-
+				+ "/#/restpassword";
+System.out.println(redirectUrl);
 		redirectView.setUrl(redirectUrl);
-		return redirectView;
+		 return new ModelAndView("redirect:"+redirectUrl);
 	}
 
 	@RequestMapping(value = "/savePassword", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {

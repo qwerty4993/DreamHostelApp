@@ -24,8 +24,8 @@
 							class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<!-- <li><a href="#">{{username}}</a></li> -->
-							 <li><a href="#">Inställningar</a></li>
-							<li><a ng-click="doLogout()">Logga ut</a></li> 
+							 <li><a href="#">Profile</a></li>
+							<li><a ng-click="doLogout()">Logout</a></li> 
 						</ul></li>
 				</ul>
 			</div>
@@ -42,19 +42,21 @@
 						ng-click="goToFeaturesListPage()">Users</a></li>
 					<li ng-show="hasFeature('HOSTELREQUEST').allowRead == true"><a
 						ng-click="goToHostelRequestListPage()">New Hostel Request</a></li>
-						<li ng-show="hasFeature('ROOMS').allowRead == true"><a
-						ng-click="goToFeaturesListPage()">ROOMS</a></li> 
 						<li ng-show="hasFeature('PROFILE').allowRead == true"><a
 						ng-click="goToFeaturesListPage()">PROFILE</a></li>
-						<li ng-show="hasFeature('STUDENTREQUEST').allowRead == true"><a
-						ng-click="goToFeaturesListPage()">StudentRequest</a></li>
-						<li ng-show="hasFeature('UPDATES').allowRead == true"><a
-						ng-click="goToFeaturesListPage()">updates</a></li>
+						
 						<li ng-show="hasFeature('SENDEMAIL').allowRead == true"><a
 						ng-click="goToFeaturesListPage()">Send EMail</a></li>
 						<!-- <li ng-show="hasFeature('HOSTELDETAILS').allowRead == true"><a
 						ng-click="goToHostelDetaislListPage()">Hostel Details</a></li> -->
-<!-- 						SETTINGS   StudentRequest -->
+<!-- 						SETTINGS   StudentRequest 
+<li ng-show="hasFeature('STUDENTREQUEST').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">StudentRequest</a></li>
+						<li ng-show="hasFeature('ROOMS').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">ROOMS</a></li>
+						
+						<li ng-show="hasFeature('UPDATES').allowRead == true"><a
+						ng-click="goToFeaturesListPage()">updates</a></li> -->
 						
 
 				</ul>
@@ -74,7 +76,7 @@
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3 text-center social">
 
-                                <h2>We are EDEN Builder!</h2>
+                                
 
                                 <span>We're social, come meet and meet us:</span><br>
                                 <a href="#"><i class="fa fa-twitter"></i></a>

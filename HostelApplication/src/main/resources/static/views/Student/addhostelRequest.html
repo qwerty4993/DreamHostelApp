@@ -1,16 +1,17 @@
-<!-- <style>
+<style>
 .panel-title .accordion-toggle:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
-    color: grey;         /* adjust as needed */
-}
-.panel-title .accordion-toggle.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+	/* symbol for "opening" panels */
+	font-family: 'Glyphicons Halflings';
+	/* essential for enabling glyphicon */
+	content: "\e114"; /* adjust as needed, taken from bootstrap.css */
+	float: right; /* adjust as needed */
+	color: grey; /* adjust as needed */
 }
 
+.panel-title .accordion-toggle.collapsed:after {
+	/* symbol for "collapsed" panels */
+	content: "\e080"; /* adjust as needed, taken from bootstrap.css */
+}
 </style>
 <div class="page-header">
 	<div class="container">
@@ -28,19 +29,20 @@
 				<div class="panel-body bg-light">
 					<form role="form">
 						<div class="form-group">
-						<h4 class="panel-title">
-							<a class="accordion-toggle" data-toggle="collapse"
-								data-target="#demo">Preferences</a></h4>
+							<h4 class="panel-title">
+								<a class="accordion-toggle" data-toggle="collapse"
+									data-target="#demo">Preferences</a>
+							</h4>
 							<div id="demo" class="collapse">
 								<div class="_1cEG7-">
 									<div class="_1C8YsH">
-										
+
 										<div class="_4IiNRh _-9cJSB" title="SAMSUNG">
 											<div class="_2wQvxh _1WV8jE">
 												<div class="_2kFyHg _-9cJSB">
 													<label><input type="checkbox" class="_3uUUD5">
 														<div class="_1p7h2j"></div>
-														<div class="_1GEhLw">SAMSUNG</div></label>
+														<div class="_1GEhLw">TV</div></label>
 												</div>
 											</div>
 										</div>
@@ -49,7 +51,7 @@
 												<div class="_2kFyHg _-9cJSB">
 													<label><input type="checkbox" class="_3uUUD5">
 														<div class="_1p7h2j"></div>
-														<div class="_1GEhLw">Lenovo</div></label>
+														<div class="_1GEhLw">WIFI</div></label>
 												</div>
 											</div>
 										</div>
@@ -58,7 +60,7 @@
 												<div class="_2kFyHg _2D7eOw _-9cJSB">
 													<label><input type="checkbox" class="_3uUUD5">
 														<div class="_1p7h2j"></div>
-														<div class="_1GEhLw">ABB</div></label>
+														<div class="_1GEhLw">NON-VEG</div></label>
 												</div>
 											</div>
 										</div>
@@ -67,7 +69,7 @@
 												<div class="_2kFyHg _2D7eOw _-9cJSB">
 													<label><input type="checkbox" class="_3uUUD5">
 														<div class="_1p7h2j"></div>
-														<div class="_1GEhLw">Adcom</div></label>
+														<div class="_1GEhLw">AC</div></label>
 												</div>
 											</div>
 										</div>
@@ -76,11 +78,11 @@
 												<div class="_2kFyHg _2D7eOw _-9cJSB">
 													<label><input type="checkbox" class="_3uUUD5">
 														<div class="_1p7h2j"></div>
-														<div class="_1GEhLw">Adnasan</div></label>
+														<div class="_1GEhLw">Washing-Machine</div></label>
 												</div>
 											</div>
 										</div>
-										<div class="_4IiNRh _-9cJSB" title="AIRTYME">
+										<!-- <div class="_4IiNRh _-9cJSB" title="AIRTYME">
 											<div class="_2wQvxh _1WV8jE">
 												<div class="_2kFyHg _2D7eOw _-9cJSB">
 													<label><input type="checkbox" class="_3uUUD5">
@@ -88,9 +90,21 @@
 														<div class="_1GEhLw">AIRTYME</div></label>
 												</div>
 											</div>
+										</div> -->
+
+										<div class="form-group col-md-6 col-sm-6">
+											<label>Address1<span
+												ng-show="hostel.address1 == undefined ||hostel.address1==''"
+												style="color: red">*</span></label>
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="glyphicon glyphicon-th"></i></span> <input type="text"
+													class="form-control"
+													placeholder="Enter address" ng-model="hostel.address1">
+											</div>
 										</div>
 									</div>
-								
+
 								</div>
 
 								<div class="form-group">
@@ -140,23 +154,23 @@
 		</div>
 	</div>
 </div>
-Modal
+<!-- Modal -->
 <div class="modal fade" id="companyDeletion" role="dialog">
 	<div class="modal-dialog">
-		Modal content
+		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header modal-header-danger">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Vill du verkligen ta bort?</h4>
 			</div>
 			<div class="modal-body">
-				<p>Genom att ta bort av gruppen, De anst√§llda som √§r knutna till
-					f√∂retaget " {{deleteGroup.name}} " kommer att tas bort.</p>
+				<p>Genom att ta bort av gruppen, De anst‰llda som ‰r knutna till
+					fˆretaget " {{deleteGroup.name}} " kommer att tas bort.</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" data-dismiss="modal"
 					ng-click="confirmDelete()">Ok</button>
-				<button type="button" class="btn btn-link" data-dismiss="modal">St√§nga</button>
+				<button type="button" class="btn btn-link" data-dismiss="modal">St‰nga</button>
 			</div>
 		</div>
 	</div>
@@ -164,4 +178,3 @@ Modal
 
 
 
- -->

@@ -24,14 +24,16 @@ public interface HostelRepository extends CrudRepository<HostelDetails, Long>, J
 
 	List<HostelDetails> findByState(String state);
 
-	@Query("select u from HostelDetails u where u.city= :city or u.state= :state or u.tv=:tv")
-	List<HostelDetails> getCityState(@Param("city") String city, @Param("state") String state, @Param("tv") boolean tv);
+	@Query("select u from HostelDetails u where u.city= :city or u.state= :state or u.tv=:tv or u.nonVegetarian= :nonVegetarian or u.washingMachine= :washingMachine")
+	List<HostelDetails> getCityState(@Param("city") String city, @Param("state") String state, @Param("tv") boolean tv,
+			@Param("nonVegetarian") boolean nonVegetarian, @Param("washingMachine") boolean washingMachine);
 
 	// @Value("${spring.queries.roles-query}")
 	// private String rolesQuery;
-	
+
 	@Query("SELECT count(*) FROM HostelDetails where isEnable=false")
 	String findCount();
+
 	@Query("SELECT count(*) FROM HostelDetails where isEnable=true")
 	String findHostelActiveCount();
 

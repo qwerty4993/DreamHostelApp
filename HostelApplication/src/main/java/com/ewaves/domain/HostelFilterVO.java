@@ -5,7 +5,7 @@ public class HostelFilterVO {
 	private String fromCityName;
 	private String fromStateName;
 	private boolean tv;
-	private boolean wifi;
+
 	private boolean ac;
 	private boolean nonVegetarian;
 	private boolean washingMachine;
@@ -33,14 +33,6 @@ public class HostelFilterVO {
 
 	public void setTv(boolean tv) {
 		this.tv = tv;
-	}
-
-	public boolean isWifi() {
-		return wifi;
-	}
-
-	public void setWifi(boolean wifi) {
-		this.wifi = wifi;
 	}
 
 	public boolean isAc() {
@@ -78,8 +70,8 @@ public class HostelFilterVO {
 	@Override
 	public String toString() {
 		return "HostelFilterVO [fromCityName=" + fromCityName + ", fromStateName=" + fromStateName + ", tv=" + tv
-				+ ", wifi=" + wifi + ", ac=" + ac + ", nonVegetarian=" + nonVegetarian + ", washingMachine="
-				+ washingMachine + ", hotWater=" + hotWater + "]";
+				+ ", ac=" + ac + ", nonVegetarian=" + nonVegetarian + ", washingMachine=" + washingMachine
+				+ ", hotWater=" + hotWater + "]";
 	}
 
 }

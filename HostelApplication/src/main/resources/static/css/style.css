@@ -23,7 +23,7 @@ main {
 
 @media ( min-width : 768px) {
 	main.hassub {
-		margin-top: 120px;
+		    /* margin-top: 120px; */
 	}
 	.uhand {
 		margin: 70px 0;
@@ -573,49 +573,48 @@ p.creating {
 }p .name {
     text-align: center;
 }
-
-/ checkboxes /
-.2kFyHg .1p7h2j {
- position: relative;
- width: 14px;
- height: 14px;
- background-color: transparent;
- border: 1.4px solid #c2c2c2;
- border-radius: 1.5px;
- box-sizing: border-box;
- display: inline-block;
- vertical-align: middle;
- cursor: pointer;
+/* checkboxes */
+._2kFyHg ._1p7h2j {
+	position: relative;
+	width: 14px;
+	height: 14px;
+	background-color: transparent;
+	border: 1.4px solid #c2c2c2;
+	border-radius: 1.5px;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
 }
 
-.2kFyHg .3uUUD5:checked+._1p7h2j {
- background: #2874f0;
- border: #2874f0;
+._2kFyHg ._3uUUD5:checked+._1p7h2j {
+	background: #2874f0;
+	border: #2874f0;
 }
 
-.2kFyHg .3uUUD5 {
- visibility: hidden;
- position: absolute;
- top: 0;
- left: 0;
+._2kFyHg ._3uUUD5 {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 ._-9cJSB {
- padding: 3px 0;
+	padding: 3px 0;
 }
 
 ._2kFyHg {
- cursor: pointer;
- width: 100%;
- position: relative;
+	cursor: pointer;
+	width: 100%;
+	position: relative;
 }
 
-.2kFyHg .3uUUD5:checked+._1p7h2j:before {
- display: block;
+._2kFyHg ._3uUUD5:checked+._1p7h2j:before {
+	display: block;
 }
 
-.2kFyHg .1p7h2j:before {
- position: absolute;
+._2kFyHg ._1p7h2j:before {
+	position: absolute;
     content: "";
     left: 5px;
     top: 1px;
@@ -631,15 +630,15 @@ p.creating {
 }
 
 ._1GEhLw {
- vertical-align: middle;
- font-size: 14px;
- padding-left: var(- -checkbox-label-margin-left);
- color: var(- -color-grey-grade5);
- display: inline-block;
- width: calc(100% - ( var(- -checkbox-side)+ var(- -checkbox-label-margin-left)));
- white-space: nowrap;
- overflow: hidden;
- text-overflow: ellipsis;
- line-height: 1;
- cursor: pointer;
+	vertical-align: middle;
+	font-size: 14px;
+	padding-left: var(- -checkbox-label-margin-left);
+	color: var(- -color-grey-grade5);
+	display: inline-block;
+	width: calc(100% - ( var(- -checkbox-side)+ var(- -checkbox-label-margin-left)));
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1;
+	cursor: pointer;
 }
