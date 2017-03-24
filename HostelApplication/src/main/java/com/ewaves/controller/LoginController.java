@@ -47,6 +47,7 @@ public class LoginController {
 		return responseVO;
 
 	}
+	
 
 	@RequestMapping(value = "/forgotPassword/{email}", method = RequestMethod.GET)
 	public @ResponseBody ResponseVO forgotPassword(final HttpServletRequest request,
